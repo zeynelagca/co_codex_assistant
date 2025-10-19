@@ -1,0 +1,32 @@
+.o_screen_pattern_widget {
+    max-width: 340px;
+
+    canvas {
+        width: 320px;
+        height: 320px;
+        border: 1px solid #d1d5db;
+        border-radius: 12px;
+        background: #f8fafc;
+        box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.06);
+        display: block;
+    }
+
+    .o_screen_pattern_controls {
+        margin-top: 0.75rem;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .o_screen_pattern_preview {
+        width: 320px;
+        max-width: 100%;
+        border: 1px solid #d1d5db;
+        border-radius: 12px;
+        background: #f8fafc;
+        padding: 8px;
+    }
+
+    .o_screen_pattern_placeholder {
+        font-style: italic;
+    }
+}

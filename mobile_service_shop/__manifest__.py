@@ -27,7 +27,7 @@
     'author': 'Cybrosys Techno Solutions',
     'company': 'Cybrosys Techno Solutions',
     'website': 'https://www.cybrosys.com',
-    'depends': ['stock_account', 'mail', 'product', 'account'],
+    'depends': ['stock_account', 'mail', 'product', 'account', 'web'],
     'data': ['security/mobile_service_shop_security.xml',
              'security/ir.model.access.csv',
              'views/mobile_service_views.xml',
@@ -47,6 +47,9 @@
     'assets': {
         'web.assets_backend': [
             'mobile_service_shop/static/src/css/mobile_service.css',
+            'mobile_service_shop/static/src/scss/screen_pattern_widget.scss',
+            'mobile_service_shop/static/src/js/screen_pattern_widget.js',
+            'mobile_service_shop/static/src/xml/screen_pattern_widget.xml',
         ],
     },
     'license': 'LGPL-3',

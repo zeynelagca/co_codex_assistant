@@ -315,3 +315,11 @@ msgstr "Yazdır / Barkod Çıktısı Al"
 #. module: mobile_service_shop
 msgid "image"
 msgstr "görsel"
+
+#. module: mobile_service_shop
+msgid "Temizle"
+msgstr "Temizle"
+
+#. module: mobile_service_shop
+msgid "Desen yok"
+msgstr "Desen yok"

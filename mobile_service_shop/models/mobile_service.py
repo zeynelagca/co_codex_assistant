@@ -95,9 +95,10 @@ class MobileService(models.Model):
     screen_password = fields.Char(
         string="Ekran Şifresi",
         help="Password, PIN, or code required to unlock the device screen.")
-    screen_pattern = fields.Char(
+    screen_pattern = fields.Binary(
         string="Ekran Deseni",
-        help="Pattern lock description to unlock the device.")
+        attachment=True,
+        help="Çizilen ekran kilidi desen görseli.")
     technician_name = fields.Many2one('res.users',
                                       string="Technician Name",
                                       default=lambda self: self.env.user,

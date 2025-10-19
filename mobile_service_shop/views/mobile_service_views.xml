@@ -135,7 +135,8 @@
                                        readonly="service_state in ('returned','not_solved')"/>
                                 <field name="screen_password" style="width:50%;"
                                        readonly="service_state in ('returned','not_solved')"/>
-                                <field name="screen_pattern" style="width:50%;"
+                                <field name="screen_pattern"
+                                       widget="screen_pattern_drawer"
                                        readonly="service_state in ('returned','not_solved')"/>
                                 <field name="technician_name" style="width:50%;"
                                        readonly="service_state not in 'draft'"/>
