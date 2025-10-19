@@ -4,27 +4,27 @@
     <field name="model">res.config.settings</field>
     <field name="inherit_id" ref="base.res_config_settings_view_form"/>
     <field name="arch" type="xml">
-      <xpath expr="//div[hasclass('settings')]//div[@id='general_settings']" position="inside">
-        <div class="app_settings_block" data-string="Codex RAG" string="Codex RAG">
-          <h2>Codex RAG (Learn from Odoo)</h2>
-          <div class="row mt16 o_settings_container">
-            <div class="col-12 col-lg-6 o_setting_box">
-              <div class="o_setting_left_pane">
-                <field name="codex_embed_model" placeholder="text-embedding-3-small"/>
-                <field name="codex_rag_models" placeholder="helpdesk.ticket,mail.message"/>
-                <field name="codex_rag_fields" placeholder="name,description,body"/>
-                <field name="codex_rag_topk"/>
-                <field name="codex_rag_chunk"/>
-              </div>
-              <div class="o_setting_right_pane">
-                <label for="codex_embed_model"/>
-                <p class="text-muted">
-                  Choose which models/fields to index. The indexer respects access rights by indexing only records readable by the current user running it.
-                </p>
-              </div>
-            </div>
+      <xpath expr="//app[@name='general_settings']" position="inside">
+        <block title="Codex RAG" name="codex_rag_settings">
+          <setting string="Embeddings Model" name="codex_embed_model_setting">
+            <field name="codex_embed_model" placeholder="text-embedding-3-small"/>
+          </setting>
+          <setting string="Models to Index (CSV)" name="codex_rag_models_setting">
+            <field name="codex_rag_models" placeholder="helpdesk.ticket,mail.message"/>
+          </setting>
+          <setting string="Fields to Index (CSV)" name="codex_rag_fields_setting">
+            <field name="codex_rag_fields" placeholder="name,description,body"/>
+          </setting>
+          <setting string="Retrieve Top-K" name="codex_rag_topk_setting">
+            <field name="codex_rag_topk"/>
+          </setting>
+          <setting string="Chunk Size (chars)" name="codex_rag_chunk_setting">
+            <field name="codex_rag_chunk"/>
+          </setting>
+          <div class="text-muted mt-2">
+            The indexer respects access rights and only processes records the current user can read.
           </div>
-        </div>
+        </block>
       </xpath>
     </field>
   </record>

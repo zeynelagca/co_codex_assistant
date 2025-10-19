@@ -4,26 +4,28 @@
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[hasclass('settings')]//div[@id='general_settings']" position="inside">
-                <div class="app_settings_block" data-string="Codex Assistant" string="Codex Assistant">
-                    <h2>Codex Assistant</h2>
-                    <div class="row mt16 o_settings_container">
-                        <div class="col-12 col-lg-6 o_setting_box">
-                            <div class="o_setting_left_pane">
-                                <field name="codex_api_base" placeholder="https://api.provider.com/v1"/>
-                                <field name="codex_api_model" placeholder="model-name"/>
-                                <field name="codex_api_key" password="True"/>
-                                <field name="codex_temperature"/>
-                                <field name="codex_max_tokens"/>
-                                <field name="codex_timeout"/>
-                            </div>
-                            <div class="o_setting_right_pane">
-                                <label for="codex_api_base"/>
-                                <p class="text-muted">Configure your LLM provider (API Base, Model, API Key). Supports OpenAI-compatible endpoints.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <xpath expr="//app[@name='general_settings']" position="inside">
+                <block title="Codex Assistant" name="codex_assistant_settings">
+                    <setting string="LLM API Base URL" name="codex_api_base_setting">
+                        <field name="codex_api_base" placeholder="https://api.provider.com/v1"/>
+                        <div class="text-muted">Supports OpenAI-compatible endpoints or custom gateways.</div>
+                    </setting>
+                    <setting string="LLM Model" name="codex_api_model_setting">
+                        <field name="codex_api_model" placeholder="model-name"/>
+                    </setting>
+                    <setting string="LLM API Key" name="codex_api_key_setting">
+                        <field name="codex_api_key" password="True"/>
+                    </setting>
+                    <setting string="LLM Temperature" name="codex_temperature_setting">
+                        <field name="codex_temperature"/>
+                    </setting>
+                    <setting string="Max Output Tokens" name="codex_max_tokens_setting">
+                        <field name="codex_max_tokens"/>
+                    </setting>
+                    <setting string="HTTP Timeout (sec)" name="codex_timeout_setting">
+                        <field name="codex_timeout"/>
+                    </setting>
+                </block>
             </xpath>
         </field>
     </record>
