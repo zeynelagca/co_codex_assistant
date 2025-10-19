@@ -27,12 +27,4 @@
         </field>
     </record>
 
-    <record id="helpdesk_ticket_model_inherit_codex" model="ir.model.fields">
-        <field name="name">codex_history_ids</field>
-        <field name="model">helpdesk.ticket</field>
-        <field name="ttype">one2many</field>
-        <field name="relation">codex.history</field>
-        <field name="relation_field">ticket_id</field>
-        <field name="field_description">Codex History</field>
-    </record>
 </odoo>
