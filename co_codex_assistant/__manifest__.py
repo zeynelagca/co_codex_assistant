@@ -10,6 +10,7 @@
     'depends': ['base', 'base_setup', 'mail', 'helpdesk'],
     'data': [
         'security/ir.model.access.csv',
+        'wizard/codex_generate_wizard_views.xml',
         'views/res_config_settings_views.xml',
         'views/res_config_settings_rag_views.xml',
         'views/codex_document_views.xml',
@@ -17,7 +18,6 @@
         'views/codex_history_views.xml',
         'views/helpdesk_views.xml',
         'views/mail_channel_views.xml',
-        'wizard/codex_generate_wizard_views.xml',
     ],
     'assets': {
         'web.assets_backend': [
