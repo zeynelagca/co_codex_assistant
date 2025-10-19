@@ -65,7 +65,7 @@
                                 groups="mobile_service_shop.mobile_service_group_manager"/>
                         <button string="Not Solved" type="object" name="not_solved"
                                 invisible="service_state not in ('assigned')"/>
-                        <button name="get_ticket" string="Print Ticket" type="object" class="oe_highlight"
+                        <button name="get_ticket" string="Yazdır / Barkod Çıktısı Al" type="object" class="oe_highlight"
                                 groups="mobile_service_shop.mobile_service_group_manager"/>
                         <button name="action_send_mail" string="Send email" type="object"
                                 invisible="service_state in ('draft')"
@@ -121,9 +121,17 @@
                                     <field name="model_name" placeholder="Model name"
                                            readonly="service_state not in 'draft'"/>
                                 </div>
+                                <field name="priority" style="width:50%;"
+                                       readonly="service_state in ('returned','not_solved')"/>
                                 <field name="date_request" style="width:50%;"
                                        readonly="service_state not in 'draft'"/>
+                                <field name="acceptance_date" style="width:50%;"
+                                       readonly="service_state in ('returned','not_solved')"/>
                                 <field name="return_date" style="width:50%;"
+                                       readonly="service_state in ('returned','not_solved')"/>
+                                <field name="start_date" style="width:50%;"
+                                       readonly="service_state in ('returned','not_solved')"/>
+                                <field name="end_date" style="width:50%;"
                                        readonly="service_state in ('returned','not_solved')"/>
                                 <field name="screen_password" style="width:50%;"
                                        readonly="service_state in ('returned','not_solved')"/>

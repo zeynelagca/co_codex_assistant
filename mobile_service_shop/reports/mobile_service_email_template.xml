@@ -7,31 +7,48 @@
                 <div class="page">
                     <br/>
                     <div class="row" style="margin-bottom:40px; text-align:center;margin-left:0;margin-top:2%;">
-                        <h3><strong>Servis Fişi</strong></h3>
+                        <h3><strong>Servis Kaydı Oluşturuldu</strong></h3>
                     </div>
                     <div class="col-xs-6" style="margin-top:2%; margin-left:15%;">
                         <table style="width:100%;border: none;">
                             <tbody>
                                 <tr>
-                                    <td><strong>Servis No</strong></td><td>&#160;:&#160;</td>
+                                    <td><strong>Servis Numarası</strong></td><td>&#160;:&#160;</td>
                                     <td><strong>&#160;<span style="font-size:16px; font-weight:2px;" t-esc="sev_id"/></strong></td>
-                                    <td><strong>Ad Soyad&#160;</strong></td><td>&#160;:&#160;</td>
+                                    <td><strong>Müşteri Adı&#160;</strong></td><td>&#160;:&#160;</td>
                                     <td>&#160;<span t-esc="customer_name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Müşteri Telefonu&#160;</strong></td><td>&#160;:&#160;</td>
+                                    <td>&#160;<span t-esc="contact_no or '-'"/></td>
+                                    <td><strong>Arıza Önceliği&#160;</strong></td><td>&#160;:&#160;</td>
+                                    <td>&#160;<span t-esc="priority or '-'"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Marka / Model&#160;</strong></td><td>&#160;:&#160;</td>
+                                    <td colspan="4">&#160;<span t-esc="mobile_brand or '-'"/> / <span t-esc="model_name or '-'"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Arıza Açıklaması&#160;</strong></td><td>&#160;:&#160;</td>
+                                    <td colspan="4">&#160;<span t-esc="complaint_description or complaint_types or '-'"/></td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="col-xs-6" style="margin-top:2%; margin-left:15%;">
-                        <h3 style="margin:0;"><strong>Cihaz Bilgileri</strong></h3>
                     </div>
                     <div class="col-xs-6" style="margin-top:1%; margin-left:15%;">
                         <table style="width:100%;">
                             <tbody style="line-height:2">
                                 <tr>
-                                    <td><strong>Model Kabul Tarihi&#160;</strong></td><td>&#160;:&#160;</td>
-                                    <td>&#160;<span t-esc="date_request"/></td>
+                                    <td><strong>Kabul Tarihi&#160;</strong></td><td>&#160;:&#160;</td>
+                                    <td>&#160;<span t-esc="acceptance_date or date_request or '-'"/></td>
                                     <td><strong>Teslim Tarihi&#160;</strong></td><td>&#160;:&#160;</td>
-                                    <td>&#160;<span t-esc="date_return"/></td>
+                                    <td>&#160;<span t-esc="date_return or '-'"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Başlangıç Tarihi&#160;</strong></td><td>&#160;:&#160;</td>
+                                    <td>&#160;<span t-esc="start_date or '-'"/></td>
+                                    <td><strong>Bitiş Tarihi&#160;</strong></td><td>&#160;:&#160;</td>
+                                    <td>&#160;<span t-esc="end_date or '-'"/></td>
                                 </tr>
                                 <tr>
                                     <td><strong>Ekran Şifresi&#160;</strong></td><td>&#160;:&#160;</td>

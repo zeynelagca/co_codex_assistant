@@ -77,6 +77,21 @@ class MobileService(models.Model):
                                help="Device submitted date.")
     return_date = fields.Date(string="Return Date", required=True,
                               help="Device returned date.")
+    acceptance_date = fields.Date(
+        string="Kabul Tarihi",
+        default=fields.Date.context_today,
+        help="Date when the device was accepted for service.")
+    start_date = fields.Date(
+        string="Başlangıç Tarihi",
+        help="Date when the repair work is planned to start.")
+    end_date = fields.Date(
+        string="Bitiş Tarihi",
+        help="Date when the repair work is expected to finish.")
+    priority = fields.Selection(
+        selection=[('low', 'Düşük'), ('medium', 'Orta'), ('high', 'Yüksek')],
+        string="Arıza Önceliği",
+        default='medium',
+        help="Priority level for the reported issue.")
     screen_password = fields.Char(
         string="Ekran Şifresi",
         help="Password, PIN, or code required to unlock the device screen.")
@@ -86,8 +101,7 @@ class MobileService(models.Model):
     technician_name = fields.Many2one('res.users',
                                       string="Technician Name",
                                       default=lambda self: self.env.user,
-                                      help="Work assigned technician name.",
-                                      required=True)
+                                      help="Work assigned technician name.")
     service_state = fields.Selection(
         [('draft', 'Draft'), ('assigned', 'Assigned'),
          ('completed', 'Completed'), ('returned', 'Returned'),
@@ -353,21 +367,28 @@ class MobileService(models.Model):
             for obj in complaint_id:
                 complaint = obj.complaint_type_tree
                 complaint_text = complaint.complaint_type + ", " + complaint_text
+        priority_label = dict(self._fields['priority'].selection).get(
+            self.priority, '')
         data = {
             'ids': self.ids,
             'model': self._name,
             'date_today': date_today,
             'date_request': self.date_request,
             'date_return': self.return_date,
+            'acceptance_date': self.acceptance_date,
+            'start_date': self.start_date,
+            'end_date': self.end_date,
             'sev_id': self.name,
             'warranty': self.is_in_warranty,
             'customer_name': self.person_name.name,
+            'contact_no': self.contact_no,
             'imei_no': self.imei_no,
-            'technician': self.technician_name.name,
+            'technician': self.technician_name.name if self.technician_name else '',
             'screen_password': self.screen_password,
             'screen_pattern': self.screen_pattern,
             'complaint_types': complaint_text,
             'complaint_description': description_text,
-            'mobile_brand': self.brand_name.brand_name,
-            'model_name': self.model_name.mobile_brand_models}
+            'mobile_brand': self.brand_name.brand_name if self.brand_name else '',
+            'model_name': self.model_name.mobile_brand_models if self.model_name else '',
+            'priority': priority_label}
         return self.env.ref('mobile_service_shop.mobile_service_ticket').report_action(self, data=data)

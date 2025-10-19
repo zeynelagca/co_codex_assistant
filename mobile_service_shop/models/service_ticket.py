@@ -34,6 +34,9 @@ class MobileServiceTicket(models.AbstractModel):
             'date_today': data['date_today'],
             'date_request': data['date_request'],
             'date_return': data['date_return'],
+            'acceptance_date': data.get('acceptance_date'),
+            'start_date': data.get('start_date'),
+            'end_date': data.get('end_date'),
             'sev_id': data['sev_id'],
             'imei_no': data['imei_no'],
             'technician': data['technician'],
@@ -43,6 +46,8 @@ class MobileServiceTicket(models.AbstractModel):
             'model_name': data['model_name'],
             'customer_name': data['customer_name'],
             'warranty': data['warranty'],
+            'contact_no': data.get('contact_no'),
+            'priority': data.get('priority'),
             'screen_password': data.get('screen_password'),
             'screen_pattern': data.get('screen_pattern'),
             'terms': terms}
