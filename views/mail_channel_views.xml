@@ -1,0 +1,16 @@
+<odoo>
+    <record id="mail_channel_view_form_codex" model="ir.ui.view">
+        <field name="name">mail.channel.view.form.codex</field>
+        <field name="model">mail.channel</field>
+        <field name="inherit_id" ref="mail.view_channel_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(codex_generate_wizard_action)d"
+                        type="action"
+                        class="btn-secondary"
+                        string="Codex Summary"
+                        context="{'default_channel_id': active_id, 'default_purpose': 'summary'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

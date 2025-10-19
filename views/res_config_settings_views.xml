@@ -1,0 +1,30 @@
+<odoo>
+    <record id="res_config_settings_view_form_codex" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.codex</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.view_res_config_settings"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]//div[@id='general_settings']" position="inside">
+                <div class="app_settings_block" data-string="Codex Assistant" string="Codex Assistant">
+                    <h2>Codex Assistant</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="codex_api_base" placeholder="https://api.provider.com/v1"/>
+                                <field name="codex_api_model" placeholder="model-name"/>
+                                <field name="codex_api_key" password="True"/>
+                                <field name="codex_temperature"/>
+                                <field name="codex_max_tokens"/>
+                                <field name="codex_timeout"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="codex_api_base"/>
+                                <p class="text-muted">Configure your LLM provider (API Base, Model, API Key). Supports OpenAI-compatible endpoints.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

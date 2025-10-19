@@ -1,0 +1,38 @@
+<odoo>
+    <record id="helpdesk_ticket_view_form_codex" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.view.form.codex</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(codex_generate_wizard_action)d"
+                        type="action"
+                        class="oe_highlight"
+                        string="Ask Codex"
+                        context="{'default_ticket_id': active_id, 'default_purpose': 'reply'}"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Codex History">
+                    <field name="message_ids" invisible="1"/>
+                    <field name="codex_history_ids" context="{'default_ticket_id': active_id}" domain="[('ticket_id','=',active_id)]">
+                        <tree editable="bottom">
+                            <field name="create_date" readonly="1"/>
+                            <field name="purpose" readonly="1"/>
+                            <field name="prompt" readonly="1"/>
+                            <field name="response" readonly="1"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_model_inherit_codex" model="ir.model.fields">
+        <field name="name">codex_history_ids</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="ttype">one2many</field>
+        <field name="relation">codex.history</field>
+        <field name="relation_field">ticket_id</field>
+        <field name="field_description">Codex History</field>
+    </record>
+</odoo>

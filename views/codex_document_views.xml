@@ -1,0 +1,48 @@
+<odoo>
+  <record id="view_codex_document_tree" model="ir.ui.view">
+    <field name="name">codex.document.tree</field>
+    <field name="model">codex.document</field>
+    <field name="arch" type="xml">
+      <tree default_order="write_date desc">
+        <field name="write_date"/>
+        <field name="title"/>
+        <field name="model"/>
+        <field name="res_id"/>
+        <field name="company_id"/>
+        <field name="language"/>
+        <field name="url"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_codex_document_form" model="ir.ui.view">
+    <field name="name">codex.document.form</field>
+    <field name="model">codex.document</field>
+    <field name="arch" type="xml">
+      <form string="Codex Document">
+        <sheet>
+          <group>
+            <field name="title"/>
+            <field name="model"/>
+            <field name="res_id"/>
+            <field name="company_id"/>
+            <field name="language"/>
+            <field name="tags"/>
+            <field name="url"/>
+          </group>
+          <group>
+            <field name="body" nolabel="1"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_codex_documents" model="ir.actions.act_window">
+    <field name="name">Documents</field>
+    <field name="res_model">codex.document</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_codex_documents" name="Documents" parent="mail.menu_root" sequence="91" action="action_codex_documents"/>
+</odoo>

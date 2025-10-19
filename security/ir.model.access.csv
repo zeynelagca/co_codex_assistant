@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_codex_history_user,Codex History User,model_codex_history,base.group_user,1,1,1,0
+access_codex_document_user,Codex Document User,model_codex_document,base.group_user,1,1,1,0

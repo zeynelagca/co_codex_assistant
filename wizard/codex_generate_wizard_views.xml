@@ -1,0 +1,41 @@
+<odoo>
+    <record id="codex_generate_wizard_form" model="ir.ui.view">
+        <field name="name">codex.generate.wizard.form</field>
+        <field name="model">codex.generate.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Codex Assistant">
+                <sheet>
+                    <group>
+                        <field name="purpose"/>
+                        <field name="language"/>
+                        <field name="tone"/>
+                        <field name="ticket_id" invisible="1"/>
+                        <field name="channel_id" invisible="1"/>
+                    </group>
+                    <group string="Context">
+                        <field name="context_text" nolabel="1"/>
+                    </group>
+                    <group string="Instruction (Optional)">
+                        <field name="prompt" placeholder="Add extra instructions (e.g., be concise, include SLA refs)..."/>
+                    </group>
+                    <group string="Result">
+                        <field name="result" nolabel="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Generate" name="action_generate" type="object" class="oe_highlight"/>
+                    <button string="Use in Composer" name="action_use_in_composer" type="object" attrs="{'invisible': [('result','=',False)]}"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="codex_generate_wizard_action" model="ir.actions.act_window">
+        <field name="name">Codex Assistant</field>
+        <field name="res_model">codex.generate.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+</odoo>

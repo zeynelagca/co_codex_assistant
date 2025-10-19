@@ -1,0 +1,31 @@
+<odoo>
+  <record id="res_config_settings_view_form_codex_rag" model="ir.ui.view">
+    <field name="name">res.config.settings.view.form.codex.rag</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base.view_res_config_settings"/>
+    <field name="arch" type="xml">
+      <xpath expr="//div[hasclass('settings')]//div[@id='general_settings']" position="inside">
+        <div class="app_settings_block" data-string="Codex RAG" string="Codex RAG">
+          <h2>Codex RAG (Learn from Odoo)</h2>
+          <div class="row mt16 o_settings_container">
+            <div class="col-12 col-lg-6 o_setting_box">
+              <div class="o_setting_left_pane">
+                <field name="codex_embed_model" placeholder="text-embedding-3-small"/>
+                <field name="codex_rag_models" placeholder="helpdesk.ticket,mail.message"/>
+                <field name="codex_rag_fields" placeholder="name,description,body"/>
+                <field name="codex_rag_topk"/>
+                <field name="codex_rag_chunk"/>
+              </div>
+              <div class="o_setting_right_pane">
+                <label for="codex_embed_model"/>
+                <p class="text-muted">
+                  Choose which models/fields to index. The indexer respects access rights by indexing only records readable by the current user running it.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </xpath>
+    </field>
+  </record>
+</odoo>

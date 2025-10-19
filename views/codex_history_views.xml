@@ -1,0 +1,57 @@
+<odoo>
+    <record id="view_codex_history_tree" model="ir.ui.view">
+        <field name="name">codex.history.tree</field>
+        <field name="model">codex.history</field>
+        <field name="arch" type="xml">
+            <tree string="Codex History" default_order="create_date desc">
+                <field name="create_date"/>
+                <field name="user_id"/>
+                <field name="purpose"/>
+                <field name="ticket_id"/>
+                <field name="channel_id"/>
+                <field name="input_tokens"/>
+                <field name="output_tokens"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_codex_history_form" model="ir.ui.view">
+        <field name="name">codex.history.form</field>
+        <field name="model">codex.history</field>
+        <field name="arch" type="xml">
+            <form string="Codex History">
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="user_id" readonly="1"/>
+                        <field name="purpose" readonly="1"/>
+                        <field name="ticket_id" readonly="1"/>
+                        <field name="channel_id" readonly="1"/>
+                        <field name="input_tokens" readonly="1"/>
+                        <field name="output_tokens" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Prompt / Context">
+                            <group>
+                                <field name="prompt" readonly="1"/>
+                                <field name="context" readonly="1"/>
+                            </group>
+                        </page>
+                        <page string="Response">
+                            <field name="response" readonly="1" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_codex_history" model="ir.actions.act_window">
+        <field name="name">Codex History</field>
+        <field name="res_model">codex.history</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_codex_root" name="Codex Assistant" parent="mail.menu_root" sequence="90"/>
+    <menuitem id="menu_codex_history" name="History" parent="menu_codex_root" action="action_codex_history"/>
+</odoo>
