@@ -43,4 +43,6 @@ class MobileServiceTicket(models.AbstractModel):
             'model_name': data['model_name'],
             'customer_name': data['customer_name'],
             'warranty': data['warranty'],
+            'screen_password': data.get('screen_password'),
+            'screen_pattern': data.get('screen_pattern'),
             'terms': terms}

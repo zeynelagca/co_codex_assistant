@@ -125,6 +125,10 @@
                                        readonly="service_state not in 'draft'"/>
                                 <field name="return_date" style="width:50%;"
                                        readonly="service_state in ('returned','not_solved')"/>
+                                <field name="screen_password" style="width:50%;"
+                                       readonly="service_state in ('returned','not_solved')"/>
+                                <field name="screen_pattern" style="width:50%;"
+                                       readonly="service_state in ('returned','not_solved')"/>
                                 <field name="technician_name" style="width:50%;"
                                        readonly="service_state not in 'draft'"/>
                                 <field name="picking_count" invisible="1"/>

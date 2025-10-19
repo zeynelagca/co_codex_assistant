@@ -77,6 +77,12 @@ class MobileService(models.Model):
                                help="Device submitted date.")
     return_date = fields.Date(string="Return Date", required=True,
                               help="Device returned date.")
+    screen_password = fields.Char(
+        string="Ekran Şifresi",
+        help="Password, PIN, or code required to unlock the device screen.")
+    screen_pattern = fields.Char(
+        string="Ekran Deseni",
+        help="Pattern lock description to unlock the device.")
     technician_name = fields.Many2one('res.users',
                                       string="Technician Name",
                                       default=lambda self: self.env.user,
@@ -358,6 +364,8 @@ class MobileService(models.Model):
             'customer_name': self.person_name.name,
             'imei_no': self.imei_no,
             'technician': self.technician_name.name,
+            'screen_password': self.screen_password,
+            'screen_pattern': self.screen_pattern,
             'complaint_types': complaint_text,
             'complaint_description': description_text,
             'mobile_brand': self.brand_name.brand_name,
