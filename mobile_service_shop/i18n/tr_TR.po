@@ -1,0 +1,317 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * mobile_service_shop
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-20 00:00+0000\n"
+"PO-Revision-Date: 2025-10-20 00:00+0000\n"
+"Last-Translator: Codex Assistant\n"
+"Language-Team: \n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+
+#. module: mobile_service_shop
+msgid "# Invoice"
+msgstr "# Fatura"
+
+#. module: mobile_service_shop
+msgid "Address"
+msgstr "Adres"
+
+#. module: mobile_service_shop
+msgid "Amount"
+msgstr "Tutar"
+
+#. module: mobile_service_shop
+msgid "Arıza Önceliği"
+msgstr "Arıza Önceliği"
+
+#. module: mobile_service_shop
+msgid "Assign to technician"
+msgstr "Teknisyene ata"
+
+#. module: mobile_service_shop
+msgid "Başlangıç Tarihi"
+msgstr "Başlangıç Tarihi"
+
+#. module: mobile_service_shop
+msgid "Bitiş Tarihi"
+msgstr "Bitiş Tarihi"
+
+#. module: mobile_service_shop
+msgid "Brand"
+msgstr "Marka"
+
+#. module: mobile_service_shop
+msgid "Brand Model"
+msgstr "Marka Modeli"
+
+#. module: mobile_service_shop
+msgid "Cancel"
+msgstr "İptal"
+
+#. module: mobile_service_shop
+msgid "Category"
+msgstr "Kategori"
+
+#. module: mobile_service_shop
+msgid "Colour"
+msgstr "Renk"
+
+#. module: mobile_service_shop
+msgid "Complaint ID"
+msgstr "Şikayet Kimliği"
+
+#. module: mobile_service_shop
+msgid "Complaint Template"
+msgstr "Şikayet Şablonu"
+
+#. module: mobile_service_shop
+msgid "Complaint Type"
+msgstr "Şikayet Türü"
+
+#. module: mobile_service_shop
+msgid "Complaints"
+msgstr "Şikayetler"
+
+#. module: mobile_service_shop
+msgid "Complaints Tree"
+msgstr "Şikayet Ağacı"
+
+#. module: mobile_service_shop
+msgid "Completed"
+msgstr "Tamamlandı"
+
+#. module: mobile_service_shop
+msgid "Contact Number"
+msgstr "İletişim Numarası"
+
+#. module: mobile_service_shop
+msgid "Create Invoice"
+msgstr "Fatura Oluştur"
+
+#. module: mobile_service_shop
+msgid "Create Invoices"
+msgstr "Fatura Oluştur"
+
+#. module: mobile_service_shop
+msgid "Customer Name"
+msgstr "Müşteri Adı"
+
+#. module: mobile_service_shop
+msgid "Deliver To"
+msgstr "Teslim Yeri"
+
+#. module: mobile_service_shop
+msgid "Description"
+msgstr "Açıklama"
+
+#. module: mobile_service_shop
+msgid "Draft"
+msgstr "Taslak"
+
+#. module: mobile_service_shop
+msgid "Ekran Deseni"
+msgstr "Ekran Deseni"
+
+#. module: mobile_service_shop
+msgid "Ekran Şifresi"
+msgstr "Ekran Şifresi"
+
+#. module: mobile_service_shop
+msgid "Email"
+msgstr "E-posta"
+
+#. module: mobile_service_shop
+msgid "First Invoice Created"
+msgstr "İlk Fatura Oluşturuldu"
+
+#. module: mobile_service_shop
+msgid "Group By"
+msgstr "Grupla"
+
+#. module: mobile_service_shop
+msgid "IMEI Number"
+msgstr "IMEI Numarası"
+
+#. module: mobile_service_shop
+msgid "Image"
+msgstr "Görsel"
+
+#. module: mobile_service_shop
+msgid "Internal Notes"
+msgstr "Dahili Notlar"
+
+#. module: mobile_service_shop
+msgid "Invoice"
+msgstr "Fatura"
+
+#. module: mobile_service_shop
+msgid "Invoice Service Order"
+msgstr "Servis Siparişini Faturalandır"
+
+#. module: mobile_service_shop
+msgid "Invoice method"
+msgstr "Faturalama yöntemi"
+
+#. module: mobile_service_shop
+msgid "Invoiced Qty"
+msgstr "Faturalanan Miktar"
+
+#. module: mobile_service_shop
+msgid "Invoices"
+msgstr "Faturalar"
+
+#. module: mobile_service_shop
+msgid "Kabul Tarihi"
+msgstr "Kabul Tarihi"
+
+#. module: mobile_service_shop
+msgid "Mobile Brand"
+msgstr "Mobil Marka"
+
+#. module: mobile_service_shop
+msgid "Mobile Shop"
+msgstr "Mobil Servis"
+
+#. module: mobile_service_shop
+msgid "Model"
+msgstr "Model"
+
+#. module: mobile_service_shop
+msgid "Model Name"
+msgstr "Model Adı"
+
+#. module: mobile_service_shop
+msgid "Not Solved"
+msgstr "Çözülmedi"
+
+#. module: mobile_service_shop
+msgid "Note"
+msgstr "Not"
+
+#. module: mobile_service_shop
+msgid "Parts Order Lines"
+msgstr "Parça Sipariş Satırları"
+
+#. module: mobile_service_shop
+msgid "Parts Usage"
+msgstr "Parça Kullanımı"
+
+#. module: mobile_service_shop
+msgid "Parts details"
+msgstr "Parça detayları"
+
+#. module: mobile_service_shop
+msgid "Picking Count"
+msgstr "Toplama Sayısı"
+
+#. module: mobile_service_shop
+msgid "Picking Id"
+msgstr "Toplama Kimliği"
+
+#. module: mobile_service_shop
+msgid "Post Stock moves"
+msgstr "Stok hareketlerini gönder"
+
+#. module: mobile_service_shop
+msgid "Price"
+msgstr "Fiyat"
+
+#. module: mobile_service_shop
+msgid "Product"
+msgstr "Ürün"
+
+#. module: mobile_service_shop
+msgid "Requested Date"
+msgstr "Talep Tarihi"
+
+#. module: mobile_service_shop
+msgid "Return Date"
+msgstr "İade Tarihi"
+
+#. module: mobile_service_shop
+msgid "Return advance"
+msgstr "Avansı iade et"
+
+#. module: mobile_service_shop
+msgid "Return to customer"
+msgstr "Müşteriye iade et"
+
+#. module: mobile_service_shop
+msgid "Returned"
+msgstr "İade edildi"
+
+#. module: mobile_service_shop
+msgid "Search in requests"
+msgstr "Taleplerde ara"
+
+#. module: mobile_service_shop
+msgid "Send email"
+msgstr "E-posta gönder"
+
+#. module: mobile_service_shop
+msgid "Service Graph"
+msgstr "Servis Grafiği"
+
+#. module: mobile_service_shop
+msgid "Service Id"
+msgstr "Servis Kimliği"
+
+#. module: mobile_service_shop
+msgid "Service Number"
+msgstr "Servis Numarası"
+
+#. module: mobile_service_shop
+msgid "Service State"
+msgstr "Servis Durumu"
+
+#. module: mobile_service_shop
+msgid "Service Status"
+msgstr "Servis Durumu"
+
+#. module: mobile_service_shop
+msgid "Stock Move Posted Qty"
+msgstr "İşlenen Stok Hareket Miktarı"
+
+#. module: mobile_service_shop
+msgid "Technician"
+msgstr "Teknisyen"
+
+#. module: mobile_service_shop
+msgid "Technician Name"
+msgstr "Teknisyen Adı"
+
+#. module: mobile_service_shop
+msgid "Terms and Conditions"
+msgstr "Şartlar ve Koşullar"
+
+#. module: mobile_service_shop
+msgid "Unit Price"
+msgstr "Birim Fiyat"
+
+#. module: mobile_service_shop
+msgid "Unit of Measure"
+msgstr "Ölçü Birimi"
+
+#. module: mobile_service_shop
+msgid "Used Quantity"
+msgstr "Kullanılan Miktar"
+
+#. module: mobile_service_shop
+msgid "Warranty No "
+msgstr "Garanti No "
+
+#. module: mobile_service_shop
+msgid "Yazdır / Barkod Çıktısı Al"
+msgstr "Yazdır / Barkod Çıktısı Al"
+
+#. module: mobile_service_shop
+msgid "image"
+msgstr "görsel"
