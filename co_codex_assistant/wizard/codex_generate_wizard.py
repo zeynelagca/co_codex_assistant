@@ -25,7 +25,7 @@ class CodexGenerateWizard(models.TransientModel):
     result = fields.Text('Result', readonly=True)
 
     ticket_id = fields.Many2one('helpdesk.ticket', string='Helpdesk Ticket', readonly=True)
-    channel_id = fields.Many2one('mail.channel', string='Discuss Channel', readonly=True)
+    channel_id = fields.Many2one('discuss.channel', string='Discuss Channel', readonly=True)
 
     def _build_messages(self):
         system = 'You are a helpful assistant for Odoo. Always produce concise, actionable text. If purpose is report, structure with headings and bullet points.'
@@ -111,8 +111,16 @@ class CodexGenerateWizard(models.TransientModel):
             ctx_text = '\n'.join(lines).strip()
             res['context_text'] = ctx_text
         elif channel_id:
-            channel = self.env['mail.channel'].browse(channel_id)
-            msgs = self.env['mail.message'].search([('model','=','mail.channel'),('res_id','=',channel.id)], order='date desc', limit=30)
+            channel = self.env['discuss.channel'].browse(channel_id)
+            msgs = self.env['mail.message'].search(
+                [('model', '=', 'discuss.channel'), ('res_id', '=', channel.id)],
+                order='date desc', limit=30,
+            )
+            if not msgs:
+                msgs = self.env['mail.message'].search(
+                    [('model', '=', 'mail.channel'), ('res_id', '=', channel.id)],
+                    order='date desc', limit=30,
+                )
             lines = []
             for m in reversed(msgs):
                 author = m.author_id.name or 'System'

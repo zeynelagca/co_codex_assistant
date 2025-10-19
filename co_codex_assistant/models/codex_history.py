@@ -8,7 +8,7 @@ class CodexHistory(models.Model):
     name = fields.Char(string='Title', compute='_compute_name', store=True)
     user_id = fields.Many2one('res.users', string='User', default=lambda self: self.env.user, index=True)
     ticket_id = fields.Many2one('helpdesk.ticket', string='Helpdesk Ticket')
-    channel_id = fields.Many2one('mail.channel', string='Discuss Channel')
+    channel_id = fields.Many2one('discuss.channel', string='Discuss Channel')
     purpose = fields.Selection([
         ('reply', 'Reply Draft'),
         ('summary', 'Summary'),
