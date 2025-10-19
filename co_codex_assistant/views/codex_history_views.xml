@@ -52,6 +52,5 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_codex_root" name="Codex Assistant" parent="mail.menu_root" sequence="90"/>
     <menuitem id="menu_codex_history" name="History" parent="menu_codex_root" action="action_codex_history"/>
 </odoo>

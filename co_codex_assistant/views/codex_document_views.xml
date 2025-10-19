@@ -44,5 +44,6 @@
     <field name="view_mode">tree,form</field>
   </record>
 
-  <menuitem id="menu_codex_documents" name="Documents" parent="mail.menu_root" sequence="91" action="action_codex_documents"/>
+  <menuitem id="menu_codex_root" name="Codex Assistant" parent="mail.menu_root_discuss" sequence="90"/>
+  <menuitem id="menu_codex_documents" name="Documents" parent="menu_codex_root" sequence="91" action="action_codex_documents"/>
 </odoo>
