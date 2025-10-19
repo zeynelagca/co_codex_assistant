@@ -24,7 +24,7 @@
                 </sheet>
                 <footer>
                     <button string="Generate" name="action_generate" type="object" class="oe_highlight"/>
-                    <button string="Use in Composer" name="action_use_in_composer" type="object" attrs="{'invisible': [('result','=',False)]}"/>
+                    <button string="Use in Composer" name="action_use_in_composer" type="object" invisible="result == False"/>
                     <button string="Close" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
