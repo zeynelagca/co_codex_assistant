@@ -2,7 +2,7 @@
     <record id="res_config_settings_view_form_codex" model="ir.ui.view">
         <field name="name">res.config.settings.view.form.codex</field>
         <field name="model">res.config.settings</field>
-        <field name="inherit_id" ref="base.view_res_config_settings"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//div[hasclass('settings')]//div[@id='general_settings']" position="inside">
                 <div class="app_settings_block" data-string="Codex Assistant" string="Codex Assistant">
