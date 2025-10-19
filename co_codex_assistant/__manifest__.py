@@ -7,7 +7,7 @@
     'author': 'Coflow Teknoloji',
     'website': 'https://coflow.com.tr',
     'live_test_url': 'https://coflow.com.tr',
-    'depends': ['base', 'mail', 'helpdesk'],
+    'depends': ['base', 'base_setup', 'mail', 'helpdesk'],
     'data': [
         'security/ir.model.access.csv',
         'views/res_config_settings_views.xml',
