@@ -23,9 +23,9 @@
                 <field name="event_location"/>
                 <field name="event_type_ids" widget="many2many_tags"/>
                 <field name="state" widget="badge"
-                    decoration-info="state in ['submitted']"
-                    decoration-success="state in ['approved','done']"
-                    decoration-danger="state in ['cancel']"/>
+                    decoration-info="state in ('submitted',)"
+                    decoration-success="state in ('approved','done')"
+                    decoration-danger="state in ('cancel',)"/>
                 <field name="create_date"/>
             </tree>
         </field>
@@ -37,110 +37,85 @@
         <field name="model">event.request</field>
         <field name="arch" type="xml">
             <form string="Etkinlik Talebi">
-            <header>
-    <!-- Sadece taslakta -->
-    <button name="action_submit" type="object" string="Gönder" class="btn-primary"
-            states="draft"/>
+                <header>
+                    <!-- Sadece taslakta -->
+                    <button name="action_submit" type="object" string="Gönder" class="btn-primary"
+                            states="draft"/>
 
-    <!-- Sadece gönderildiyken -->
-    <button name="action_approve" type="object" string="Onayla"
-            states="submitted"/>
+                    <!-- Sadece gönderildiyken -->
+                    <button name="action_approve" type="object" string="Onayla"
+                            states="submitted"/>
 
-    <!-- Sadece onaylandıktan sonra -->
-    <button name="action_done" type="object" string="Tamamlandı"
-            states="approved"/>
+                    <!-- Sadece onaylandıktan sonra -->
+                    <button name="action_done" type="object" string="Tamamlandı"
+                            states="approved"/>
 
-    <!-- Taslak, gönderildi veya onaylandı durumlarında -->
-    <button name="action_cancel" type="object" string="İptal"
-            states="draft,submitted,approved"/>
+                    <!-- Taslak, gönderildi veya onaylandı durumlarında -->
+                    <button name="action_cancel" type="object" string="İptal"
+                            states="draft,submitted,approved"/>
 
-    <!-- Sadece iptal durumunda -->
-    <button name="action_reset_to_draft" type="object" string="Taslağa Al"
-            states="cancel"/>
+                    <!-- Sadece iptal durumunda -->
+                    <button name="action_reset_to_draft" type="object" string="Taslağa Al"
+                            states="cancel"/>
 
-    <field name="state" widget="statusbar"
-           statusbar_visible="draft,submitted,approved,done,cancel"/>
-</header>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,submitted,approved,done,cancel"/>
+                </header>
 
-             <sheet>
-  <group>
-    <group>
-      <!-- Readonly outside draft -->
-      <field name="employee_id" options="{'no_quick_create': True}"
-             states="{'submitted':[('readonly', True)],
-                      'approved':[('readonly', True)],
-                      'done':[('readonly', True)],
-                      'cancel':[('readonly', True)]}"/>
+                <sheet>
+                    <group>
+                        <group>
+                            <!-- Readonly outside draft -->
+                            <field name="employee_id" options="{'no_quick_create': True}"
+                                   readonly="state != 'draft'"/>
 
-      <field name="event_name"
-             states="{'submitted':[('readonly', True)],
-                      'approved':[('readonly', True)],
-                      'done':[('readonly', True)],
-                      'cancel':[('readonly', True)]}"/>
+                            <field name="event_name"
+                                   readonly="state != 'draft'"/>
 
-      <field name="event_date"
-             states="{'submitted':[('readonly', True)],
-                      'approved':[('readonly', True)],
-                      'done':[('readonly', True)],
-                      'cancel':[('readonly', True)]}"/>
+                            <field name="event_date"
+                                   readonly="state != 'draft'"/>
 
-      <!-- Readonly after submitted -->
-      <field name="event_location"
-             states="{'approved':[('readonly', True)],
-                      'done':[('readonly', True)],
-                      'cancel':[('readonly', True)]}"/>
-    </group>
+                            <!-- Readonly after submitted -->
+                            <field name="event_location"
+                                   readonly="state in ('approved', 'done', 'cancel')"/>
+                        </group>
 
-    <group>
-      <!-- Readonly after submitted -->
-      <field name="event_type_ids" widget="many2many_tags"
-             states="{'approved':[('readonly', True)],
-                      'done':[('readonly', True)],
-                      'cancel':[('readonly', True)]}"/>
+                        <group>
+                            <!-- Readonly after submitted -->
+                            <field name="event_type_ids" widget="many2many_tags"
+                                   readonly="state in ('approved', 'done', 'cancel')"/>
 
-      <!-- Invisible if any tag selected; readonly after submitted -->
-      <field name="event_type_other"
-             invisible="event_type_ids != False"
-             states="{'approved':[('readonly', True)],
-                      'done':[('readonly', True)],
-                      'cancel':[('readonly', True)]}"/>
-    </group>
-  </group>
+                            <!-- Invisible if any tag selected; readonly after submitted -->
+                            <field name="event_type_other"
+                                   invisible="event_type_ids"
+                                   readonly="state in ('approved', 'done', 'cancel')"/>
+                        </group>
+                    </group>
 
-  <group>
-    <group>
-      <field name="attendance_status_ids" widget="many2many_tags"
-             states="{'approved':[('readonly', True)],
-                      'done':[('readonly', True)],
-                      'cancel':[('readonly', True)]}"/>
+                    <group>
+                        <group>
+                            <field name="attendance_status_ids" widget="many2many_tags"
+                                   readonly="state in ('approved', 'done', 'cancel')"/>
 
-      <field name="attendance_status_other"
-             states="{'approved':[('readonly', True)],
-                      'done':[('readonly', True)],
-                      'cancel':[('readonly', True)]}"/>
-    </group>
+                            <field name="attendance_status_other"
+                                   readonly="state in ('approved', 'done', 'cancel')"/>
+                        </group>
 
-    <group>
-      <field name="access_option_ids" widget="many2many_tags"
-             states="{'approved':[('readonly', True)],
-                      'done':[('readonly', True)],
-                      'cancel':[('readonly', True)]}"/>
+                        <group>
+                            <field name="access_option_ids" widget="many2many_tags"
+                                   readonly="state in ('approved', 'done', 'cancel')"/>
 
-      <field name="access_option_other"
-             states="{'approved':[('readonly', True)],
-                      'done':[('readonly', True)],
-                      'cancel':[('readonly', True)]}"/>
-    </group>
-  </group>
+                            <field name="access_option_other"
+                                   readonly="state in ('approved', 'done', 'cancel')"/>
+                        </group>
+                    </group>
 
-  <group>
-    <!-- Readonly only when done or cancel -->
-    <field name="notes" colspan="4"
-           states="{'done':[('readonly', True)],
-                    'cancel':[('readonly', True)]}"/>
-  </group>
-</sheet>
-
+                    <group>
+                        <!-- Readonly only when done or cancel -->
+                        <field name="notes" colspan="4"
+                               readonly="state in ('done', 'cancel')"/>
+                    </group>
+                </sheet>
 
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
