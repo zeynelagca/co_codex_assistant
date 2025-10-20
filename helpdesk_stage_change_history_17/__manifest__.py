@@ -9,7 +9,7 @@
     "depends": ["helpdesk"],
     "data": [
         "security/helpdesk_stage_history_security.xml",
-        "security/ir.model.access.csv",
+       # "security/ir.model.access.csv",
         "views/helpdesk_stage_history_views.xml",
         "data/server_actions.xml"
     ],
