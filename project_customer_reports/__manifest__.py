@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Project Customer Reports',
-    'version': '16.0.1.0.0',
+    'version': '17.0.1.0.0',
     'category': 'Project',
     'summary': 'Send Daily/Weekly Project and Timesheet Reports to Customers',
     'description': """
