@@ -37,19 +37,31 @@
         <field name="model">event.request</field>
         <field name="arch" type="xml">
             <form string="Etkinlik Talebi">
-                <header>
-                    <button name="action_submit" type="object" string="Gönder" class="btn-primary"
-                            attrs="{'invisible': [('state','!=','draft')]}"/>
-                    <button name="action_approve" type="object" string="Onayla"
-                            attrs="{'invisible': [('state','!=','submitted')]}"/>
-                    <button name="action_done" type="object" string="Tamamlandı"
-                            attrs="{'invisible': [('state','not in', ['approved'])]}"/>
-                    <button name="action_cancel" type="object" string="İptal"
-                            attrs="{'invisible': [('state','in', ['cancel','done'])]}"/>
-                    <button name="action_reset_to_draft" type="object" string="Taslağa Al"
-                            attrs="{'invisible': [('state','!=','cancel')]}"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,done,cancel"/>
-                </header>
+            <header>
+    <!-- Sadece taslakta -->
+    <button name="action_submit" type="object" string="Gönder" class="btn-primary"
+            states="draft"/>
+
+    <!-- Sadece gönderildiyken -->
+    <button name="action_approve" type="object" string="Onayla"
+            states="submitted"/>
+
+    <!-- Sadece onaylandıktan sonra -->
+    <button name="action_done" type="object" string="Tamamlandı"
+            states="approved"/>
+
+    <!-- Taslak, gönderildi veya onaylandı durumlarında -->
+    <button name="action_cancel" type="object" string="İptal"
+            states="draft,submitted,approved"/>
+
+    <!-- Sadece iptal durumunda -->
+    <button name="action_reset_to_draft" type="object" string="Taslağa Al"
+            states="cancel"/>
+
+    <field name="state" widget="statusbar"
+           statusbar_visible="draft,submitted,approved,done,cancel"/>
+</header>
+
                 <sheet>
                     <group>
                         <group>
