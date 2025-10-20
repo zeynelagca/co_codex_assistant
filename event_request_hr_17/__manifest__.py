@@ -13,5 +13,6 @@
         'data/event_request_data.xml',
         'views/event_request_views.xml',
     ],
-    'application': False,
+    'application': True,
+    'installable': True,
 }
