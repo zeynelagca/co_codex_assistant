@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_event_request_user,event.request user,model_event_request,base.group_user,1,1,1,1
+access_event_type_user,event.request.type user,model_event_request_type,base.group_user,1,1,1,1
+access_attendance_status_user,event.request.attendance.status user,model_event_request_attendance_status,base.group_user,1,1,1,1
+access_access_option_user,event.request.access.option user,model_event_request_access_option,base.group_user,1,1,1,1

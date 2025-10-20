@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action & Menu (under Employees) -->
+    <record id="action_event_request" model="ir.actions.act_window">
+        <field name="name">Etkinlik Talepleri</field>
+        <field name="res_model">event.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Put under Employees (HR) root menu -->
+    <menuitem id="menu_event_request_root" name="Etkinlik Talepleri" parent="hr.menu_hr_root" sequence="90"/>
+    <menuitem id="menu_event_request_records" name="Kayıtlar" parent="menu_event_request_root" action="action_event_request" sequence="10"/>
+
+    <!-- Tree View -->
+    <record id="view_event_request_tree" model="ir.ui.view">
+        <field name="name">event.request.tree</field>
+        <field name="model">event.request</field>
+        <field name="arch" type="xml">
+            <tree string="Etkinlik Talepleri" default_order="event_date desc">
+                <field name="employee_id"/>
+                <field name="event_name"/>
+                <field name="event_date"/>
+                <field name="event_location"/>
+                <field name="event_type_ids" widget="many2many_tags"/>
+                <field name="state" widget="badge"
+                    decoration-info="state in ['submitted']"
+                    decoration-success="state in ['approved','done']"
+                    decoration-danger="state in ['cancel']"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View with Chatter + statusbar -->
+    <record id="view_event_request_form" model="ir.ui.view">
+        <field name="name">event.request.form</field>
+        <field name="model">event.request</field>
+        <field name="arch" type="xml">
+            <form string="Etkinlik Talebi">
+                <header>
+                    <button name="action_submit" type="object" string="Gönder" class="btn-primary"
+                            attrs="{'invisible': [('state','!=','draft')]}"/>
+                    <button name="action_approve" type="object" string="Onayla"
+                            attrs="{'invisible': [('state','!=','submitted')]}"/>
+                    <button name="action_done" type="object" string="Tamamlandı"
+                            attrs="{'invisible': [('state','not in', ['approved'])]}"/>
+                    <button name="action_cancel" type="object" string="İptal"
+                            attrs="{'invisible': [('state','in', ['cancel','done'])]}"/>
+                    <button name="action_reset_to_draft" type="object" string="Taslağa Al"
+                            attrs="{'invisible': [('state','!=','cancel')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,done,cancel"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id" options="{'no_quick_create': True}"
+                                   attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="event_name" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="event_date" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="event_location" attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
+                        </group>
+                        <group>
+                            <field name="event_type_ids" widget="many2many_tags"
+                                   attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
+                            <field name="event_type_other"
+                                   attrs="{'invisible': [('event_type_ids','!=',False)], 'readonly': [('state','not in', ['draft','submitted'])]}"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="attendance_status_ids" widget="many2many_tags"
+                                   attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
+                            <field name="attendance_status_other"
+                                   attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
+                        </group>
+                        <group>
+                            <field name="access_option_ids" widget="many2many_tags"
+                                   attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
+                            <field name="access_option_other"
+                                   attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="notes" colspan="4"
+                               attrs="{'readonly': [('state','in', ['done','cancel'])]}"/>
+                    </group>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

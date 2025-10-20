@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Seed dictionary records -->
+    <record id="event_type_conference" model="event.request.type">
+        <field name="name">Konferans</field>
+        <field name="code">conference</field>
+    </record>
+    <record id="event_type_seminar" model="event.request.type">
+        <field name="name">Seminer</field>
+        <field name="code">seminar</field>
+    </record>
+    <record id="event_type_workshop" model="event.request.type">
+        <field name="name">Panel / Workshop</field>
+        <field name="code">workshop</field>
+    </record>
+    <record id="event_type_training" model="event.request.type">
+        <field name="name">Eğitim</field>
+        <field name="code">training</field>
+    </record>
+    <record id="event_type_other" model="event.request.type">
+        <field name="name">Diğer</field>
+        <field name="code">other</field>
+    </record>
+
+    <record id="attendance_confirmed" model="event.request.attendance.status">
+        <field name="name">Kesin Katılım</field>
+        <field name="code">confirmed</field>
+    </record>
+    <record id="attendance_pre_register" model="event.request.attendance.status">
+        <field name="name">Ön Kayıt</field>
+        <field name="code">pre_register</field>
+    </record>
+    <record id="attendance_online" model="event.request.attendance.status">
+        <field name="name">Online / Çevrimiçi</field>
+        <field name="code">online</field>
+    </record>
+    <record id="attendance_maybe" model="event.request.attendance.status">
+        <field name="name">Kararsızım</field>
+        <field name="code">considering</field>
+    </record>
+    <record id="attendance_not_attending" model="event.request.attendance.status">
+        <field name="name">Katılamayacağım</field>
+        <field name="code">not_attending</field>
+    </record>
+    <record id="attendance_other" model="event.request.attendance.status">
+        <field name="name">Diğer</field>
+        <field name="code">other</field>
+    </record>
+
+    <record id="access_guide_app" model="event.request.access.option">
+        <field name="name">Rehber App</field>
+        <field name="code">guide_app</field>
+    </record>
+    <record id="access_email_report" model="event.request.access.option">
+        <field name="name">E-posta Raporu / Çıktı</field>
+        <field name="code">email_report</field>
+    </record>
+    <record id="access_certificate" model="event.request.access.option">
+        <field name="name">Katılım Sertifikası</field>
+        <field name="code">certificate</field>
+    </record>
+    <record id="access_other" model="event.request.access.option">
+        <field name="name">Diğer</field>
+        <field name="code">other</field>
+    </record>
+</odoo>
