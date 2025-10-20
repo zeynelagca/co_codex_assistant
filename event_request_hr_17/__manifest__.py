@@ -13,6 +13,7 @@
         'data/event_request_data.xml',
         'views/event_request_views.xml',
     ],
-    'application': True,
-    'installable': True,
+    "application": True,
+    "installable": True,
+    "auto_install": True
 }

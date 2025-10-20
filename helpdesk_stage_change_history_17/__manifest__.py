@@ -13,6 +13,7 @@
         "views/helpdesk_stage_history_views.xml",
         "data/server_actions.xml"
     ],
-    "application": false,
-    "installable": true
+    "application": True,
+    "installable": True,
+    "auto_install":True
 }
