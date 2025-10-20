@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Security group -->
+    <record id="group_helpdesk_stage_history_user" model="res.groups">
+        <field name="name">Helpdesk: Stage Change History User</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="comment">Allows reading the Stage Change History records and menu.</field>
+    </record>
+
+    <!-- Inherit Helpdesk Ticket form: add Stage History tab -->
+    <record id="view_helpdesk_ticket_form_inherit_stage_history" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.form.stage.history</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='description']" position="after">
+                <page name="stage_history" string="Stage History">
+                    <field name="stage_history_ids" readonly="1" nolabel="1">
+                        <tree string="Stage History" create="0" delete="0" editable="false">
+                            <field name="start_datetime"/>
+                            <field name="end_datetime"/>
+                            <field name="duration_display"/>
+                            <field name="stage_id"/>
+                            <field name="changed_by"/>
+                        </tree>
+                        <form string="Stage History">
+                            <group>
+                                <field name="stage_id"/>
+                                <field name="start_datetime"/>
+                                <field name="end_datetime"/>
+                                <field name="duration_display" readonly="1"/>
+                                <field name="changed_by"/>
+                                <field name="is_open" readonly="1"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Standalone tree view & action for all history lines -->
+    <record id="view_helpdesk_stage_history_tree" model="ir.ui.view">
+        <field name="name">helpdesk.stage.history.tree</field>
+        <field name="model">helpdesk.stage.history</field>
+        <field name="arch" type="xml">
+            <tree string="Stage Change History" create="0" delete="0">
+                <field name="ticket_id"/>
+                <field name="stage_id"/>
+                <field name="start_datetime"/>
+                <field name="end_datetime"/>
+                <field name="duration_display"/>
+                <field name="changed_by"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_helpdesk_stage_history_search" model="ir.ui.view">
+        <field name="name">helpdesk.stage.history.search</field>
+        <field name="model">helpdesk.stage.history</field>
+        <field name="arch" type="xml">
+            <search string="Stage History">
+                <field name="ticket_id"/>
+                <field name="stage_id"/>
+                <field name="changed_by"/>
+                <filter string="Open Intervals" name="open" domain="[('is_open','=',True)]"/>
+                <filter string="Closed Intervals" name="closed" domain="[('is_open','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_helpdesk_stage_history" model="ir.actions.act_window">
+        <field name="name">Stage Change History</field>
+        <field name="res_model">helpdesk.stage.history</field>
+        <field name="view_mode">tree,search</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <menuitem id="menu_helpdesk_stage_history_root"
+              name="Stage Change History"
+              parent="helpdesk.menu_helpdesk_root"
+              action="action_helpdesk_stage_history"
+              groups="helpdesk_stage_change_history_17.group_helpdesk_stage_history_user,helpdesk.group_helpdesk_manager"/>
+</odoo>
