@@ -100,7 +100,7 @@
 
       <!-- Invisible if any tag selected; readonly after submitted -->
       <field name="event_type_other"
-             attrs="{'invisible': [('event_type_ids','!=', False)]}"
+             invisible="event_type_ids != False"
              states="{'approved':[('readonly', True)],
                       'done':[('readonly', True)],
                       'cancel':[('readonly', True)]}"/>
