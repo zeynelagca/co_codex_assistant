@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_template_task_report" model="mail.template">
+        <field name="name">Project Task Report</field>
+        <field name="model_id" ref="model_project_report_config"/>
+        <field name="subject">Task Report - ${object.project_id.name}</field>
+        <field name="email_from">${(object.project_id.user_id.email or user.email)|safe}</field>
+        <field name="email_to">${object.email_to}</field>
+        <field name="email_cc">${object.email_cc or ''}</field>
+        <field name="body_html" type="html">
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                <div style="background-color: #4472C4; color: white; padding: 20px; text-align: center;">
+                    <h2 style="margin: 0;">Project Task Report</h2>
+                </div>
+
+                <div style="padding: 20px; background-color: #f9f9f9;">
+                    <p>Dear ${object.partner_id.name or 'Customer'},</p>
+
+                    <p>Please find attached the task report for project: <strong>${object.project_id.name}</strong></p>
+
+                    <div style="background-color: white; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                        <h3 style="margin-top: 0; color: #4472C4;">Report Details</h3>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="padding: 5px;"><strong>Project:</strong></td>
+                                <td style="padding: 5px;">${object.project_id.name}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 5px;"><strong>Customer:</strong></td>
+                                <td style="padding: 5px;">${object.partner_id.name or 'N/A'}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 5px;"><strong>Report Date:</strong></td>
+                                <td style="padding: 5px;">${format_date(context_today())}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <p>Best regards,<br/>
+                    <strong>${user.name}</strong><br/>
+                    ${user.company_id.name}</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <record id="mail_template_timesheet_report" model="mail.template">
+        <field name="name">Project Timesheet Report</field>
+        <field name="model_id" ref="model_project_report_config"/>
+        <field name="subject">Timesheet Report - ${object.project_id.name}</field>
+        <field name="email_from">${(object.project_id.user_id.email or user.email)|safe}</field>
+        <field name="email_to">${object.email_to}</field>
+        <field name="email_cc">${object.email_cc or ''}</field>
+        <field name="body_html" type="html">
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                <div style="background-color: #28a745; color: white; padding: 20px; text-align: center;">
+                    <h2 style="margin: 0;">Weekly Timesheet Report</h2>
+                </div>
+
+                <div style="padding: 20px; background-color: #f9f9f9;">
+                    <p>Dear ${object.partner_id.name or 'Customer'},</p>
+
+                    <p>Please find attached the weekly timesheet report for project: <strong>${object.project_id.name}</strong></p>
+
+                    <p>Best regards,<br/>
+                    <strong>${user.name}</strong><br/>
+                    ${user.company_id.name}</p>
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>

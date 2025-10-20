@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_report_config_user,project.report.config.user,model_project_report_config,project.group_project_user,1,1,1,1
+access_project_report_config_manager,project.report.config.manager,model_project_report_config,project.group_project_manager,1,1,1,1
+access_send_report_wizard_user,send.report.wizard.user,model_send_report_wizard,project.group_project_user,1,1,1,1
+access_project_report_xlsx,project.report.xlsx,model_project_report_xlsx,project.group_project_user,1,0,0,0

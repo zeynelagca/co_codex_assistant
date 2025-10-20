@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_report_config_tree" model="ir.ui.view">
+        <field name="name">project.report.config.tree</field>
+        <field name="model">project.report.config</field>
+        <field name="arch" type="xml">
+            <tree string="Report Configurations">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="partner_id"/>
+                <field name="email_to"/>
+                <field name="send_daily_report"/>
+                <field name="send_weekly_report"/>
+                <field name="send_timesheet_report"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_report_config_form" model="ir.ui.view">
+        <field name="name">project.report.config.form</field>
+        <field name="model">project.report.config</field>
+        <field name="arch" type="xml">
+            <form string="Report Configuration">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="project_id"/>
+                            <field name="partner_id"/>
+                        </group>
+                        <group>
+                            <field name="email_to"/>
+                            <field name="email_cc"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Report Types" name="report_types">
+                            <group>
+                                <group string="Automated Reports">
+                                    <field name="send_daily_report"/>
+                                    <field name="daily_send_time" attrs="{'invisible': [('send_daily_report', '=', False)]}"/>
+                                    <field name="send_weekly_report"/>
+                                    <field name="weekly_day" attrs="{'invisible': [('send_weekly_report', '=', False)]}"/>
+                                    <field name="send_timesheet_report" attrs="{'invisible': [('send_weekly_report', '=', False)]}"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Report Options" name="report_options">
+                            <group>
+                                <group string="Include in Report">
+                                    <field name="include_description"/>
+                                    <field name="include_allocated_hours"/>
+                                    <field name="include_spent_hours"/>
+                                    <field name="include_tags"/>
+                                    <field name="include_sprint"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_project_report_config" model="ir.actions.act_window">
+        <field name="name">Report Configurations</field>
+        <field name="res_model">project.report.config</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_project_reports_root"
+              name="Customer Reports"
+              parent="project.menu_main_pm"
+              sequence="100"/>
+
+    <menuitem id="menu_project_report_config"
+              name="Report Configurations"
+              parent="menu_project_reports_root"
+              action="action_project_report_config"
+              sequence="10"/>
+</odoo>

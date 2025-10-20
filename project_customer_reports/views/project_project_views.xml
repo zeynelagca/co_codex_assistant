@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_project_form_inherit_reports" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.reports</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(action_send_report_wizard)d"
+                        type="action"
+                        string="Send Report"
+                        class="btn-primary"
+                        groups="project.group_project_user"/>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Customer Reports" name="customer_reports">
+                    <field name="report_config_ids">
+                        <tree string="Report Configurations">
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="email_to"/>
+                            <field name="send_daily_report"/>
+                            <field name="send_weekly_report"/>
+                            <field name="send_timesheet_report"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </tree>
+                    </field>
+
+                    <div class="mt-3">
+                        <p><strong>Quick Actions:</strong></p>
+                        <button name="action_send_daily_report"
+                                type="object"
+                                string="Send Daily Report Now"
+                                class="btn-secondary"
+                                icon="fa-paper-plane"/>
+                        <button name="action_send_weekly_report"
+                                type="object"
+                                string="Send Weekly Report Now"
+                                class="btn-secondary ml-2"
+                                icon="fa-paper-plane"/>
+                    </div>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

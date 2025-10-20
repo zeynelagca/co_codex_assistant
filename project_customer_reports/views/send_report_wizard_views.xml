@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_send_report_wizard_form" model="ir.ui.view">
+        <field name="name">send.report.wizard.form</field>
+        <field name="model">send.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Send Report">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id"
+                                   options="{'no_create': True, 'no_create_edit': True}"/>
+                            <field name="partner_id"/>
+                            <field name="report_type"/>
+                        </group>
+                        <group>
+                            <field name="email_to"/>
+                            <field name="email_cc"/>
+                        </group>
+                    </group>
+
+                    <group string="Date Range">
+                        <group>
+                            <field name="date_from"/>
+                        </group>
+                        <group>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                </sheet>
+
+                <footer>
+                    <button string="Send Report"
+                            name="action_send_report"
+                            type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_send_report_wizard" model="ir.actions.act_window">
+        <field name="name">Send Report</field>
+        <field name="res_model">send.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="project.model_project_project"/>
+        <field name="binding_view_types">form</field>
+    </record>
+</odoo>
