@@ -62,43 +62,85 @@
            statusbar_visible="draft,submitted,approved,done,cancel"/>
 </header>
 
-                <sheet>
-                    <group>
-                        <group>
-                            <field name="employee_id" options="{'no_quick_create': True}"
-                                   attrs="{'readonly': [('state','!=','draft')]}"/>
-                            <field name="event_name" attrs="{'readonly': [('state','!=','draft')]}"/>
-                            <field name="event_date" attrs="{'readonly': [('state','!=','draft')]}"/>
-                            <field name="event_location" attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
-                        </group>
-                        <group>
-                            <field name="event_type_ids" widget="many2many_tags"
-                                   attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
-                            <field name="event_type_other"
-                                   attrs="{'invisible': [('event_type_ids','!=',False)], 'readonly': [('state','not in', ['draft','submitted'])]}"/>
-                        </group>
-                    </group>
+             <sheet>
+  <group>
+    <group>
+      <!-- Readonly outside draft -->
+      <field name="employee_id" options="{'no_quick_create': True}"
+             states="{'submitted':[('readonly', True)],
+                      'approved':[('readonly', True)],
+                      'done':[('readonly', True)],
+                      'cancel':[('readonly', True)]}"/>
 
-                    <group>
-                        <group>
-                            <field name="attendance_status_ids" widget="many2many_tags"
-                                   attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
-                            <field name="attendance_status_other"
-                                   attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
-                        </group>
-                        <group>
-                            <field name="access_option_ids" widget="many2many_tags"
-                                   attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
-                            <field name="access_option_other"
-                                   attrs="{'readonly': [('state','not in', ['draft','submitted'])]}"/>
-                        </group>
-                    </group>
+      <field name="event_name"
+             states="{'submitted':[('readonly', True)],
+                      'approved':[('readonly', True)],
+                      'done':[('readonly', True)],
+                      'cancel':[('readonly', True)]}"/>
 
-                    <group>
-                        <field name="notes" colspan="4"
-                               attrs="{'readonly': [('state','in', ['done','cancel'])]}"/>
-                    </group>
-                </sheet>
+      <field name="event_date"
+             states="{'submitted':[('readonly', True)],
+                      'approved':[('readonly', True)],
+                      'done':[('readonly', True)],
+                      'cancel':[('readonly', True)]}"/>
+
+      <!-- Readonly after submitted -->
+      <field name="event_location"
+             states="{'approved':[('readonly', True)],
+                      'done':[('readonly', True)],
+                      'cancel':[('readonly', True)]}"/>
+    </group>
+
+    <group>
+      <!-- Readonly after submitted -->
+      <field name="event_type_ids" widget="many2many_tags"
+             states="{'approved':[('readonly', True)],
+                      'done':[('readonly', True)],
+                      'cancel':[('readonly', True)]}"/>
+
+      <!-- Invisible if any tag selected; readonly after submitted -->
+      <field name="event_type_other"
+             attrs="{'invisible': [('event_type_ids','!=', False)]}"
+             states="{'approved':[('readonly', True)],
+                      'done':[('readonly', True)],
+                      'cancel':[('readonly', True)]}"/>
+    </group>
+  </group>
+
+  <group>
+    <group>
+      <field name="attendance_status_ids" widget="many2many_tags"
+             states="{'approved':[('readonly', True)],
+                      'done':[('readonly', True)],
+                      'cancel':[('readonly', True)]}"/>
+
+      <field name="attendance_status_other"
+             states="{'approved':[('readonly', True)],
+                      'done':[('readonly', True)],
+                      'cancel':[('readonly', True)]}"/>
+    </group>
+
+    <group>
+      <field name="access_option_ids" widget="many2many_tags"
+             states="{'approved':[('readonly', True)],
+                      'done':[('readonly', True)],
+                      'cancel':[('readonly', True)]}"/>
+
+      <field name="access_option_other"
+             states="{'approved':[('readonly', True)],
+                      'done':[('readonly', True)],
+                      'cancel':[('readonly', True)]}"/>
+    </group>
+  </group>
+
+  <group>
+    <!-- Readonly only when done or cancel -->
+    <field name="notes" colspan="4"
+           states="{'done':[('readonly', True)],
+                    'cancel':[('readonly', True)]}"/>
+  </group>
+</sheet>
+
 
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
