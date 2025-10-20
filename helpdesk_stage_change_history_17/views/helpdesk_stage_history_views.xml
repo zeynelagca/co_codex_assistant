@@ -16,7 +16,7 @@
             <xpath expr="//page[@name='description']" position="after">
                 <page name="stage_history" string="Stage History">
                     <field name="stage_history_ids" readonly="1" nolabel="1">
-                        <tree string="Stage History" create="0" delete="0" editable="false">
+                        <tree string="Stage History" create="false" delete="false" editable="false">
                             <field name="start_datetime"/>
                             <field name="end_datetime"/>
                             <field name="duration_display"/>
@@ -44,7 +44,7 @@
         <field name="name">helpdesk.stage.history.tree</field>
         <field name="model">helpdesk.stage.history</field>
         <field name="arch" type="xml">
-            <tree string="Stage Change History" create="0" delete="0">
+            <tree string="Stage Change History" create="false" delete="false">
                 <field name="ticket_id"/>
                 <field name="stage_id"/>
                 <field name="start_datetime"/>
