@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
 from datetime import datetime, timedelta
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
+import re
 
 
 class ProjectReportConfig(models.Model):
@@ -48,3 +49,28 @@ class ProjectReportConfig(models.Model):
             self.partner_id = self.project_id.partner_id
             if self.project_id.partner_id.email:
                 self.email_to = self.project_id.partner_id.email
+
+    @api.constrains('email_to')
+    def _check_email_to(self):
+        """Validate email_to format"""
+        for record in self:
+            if record.email_to:
+                emails = [e.strip() for e in record.email_to.split(',')]
+                for email in emails:
+                    if email and not self._validate_email(email):
+                        raise ValidationError(_('Invalid email address: %s') % email)
+
+    @api.constrains('email_cc')
+    def _check_email_cc(self):
+        """Validate email_cc format"""
+        for record in self:
+            if record.email_cc:
+                emails = [e.strip() for e in record.email_cc.split(',')]
+                for email in emails:
+                    if email and not self._validate_email(email):
+                        raise ValidationError(_('Invalid CC email address: %s') % email)
+
+    def _validate_email(self, email):
+        """Validate email format using regex"""
+        email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        return re.match(email_regex, email) is not None

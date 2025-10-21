@@ -9,17 +9,34 @@ class ProjectReportXlsx(models.AbstractModel):
     _name = 'project.report.xlsx'
     _description = 'Project Report XLSX Generator'
 
-    def generate_task_report(self, config, report_type='daily'):
+    def generate_task_report(self, config, report_type='daily', date_from=None, date_to=None):
         """Generate task report in XLSX format"""
-        if report_type == 'daily':
-            date_from = fields.Date.today()
-            date_to = fields.Date.today()
-        else:
-            date_to = fields.Date.today()
-            date_from = date_to - timedelta(days=7)
+        if date_from is None or date_to is None:
+            if report_type == 'daily':
+                date_from = fields.Date.today()
+                date_to = fields.Date.today()
+            else:
+                date_to = fields.Date.today()
+                date_from = date_to - timedelta(days=7)
 
+        # Build domain to get tasks created in date range OR active tasks
         domain = [
             ('project_id', '=', config.project_id.id),
+            '|', '|',
+            # Tasks created in the date range
+            '&',
+            ('create_date', '>=', fields.Datetime.to_string(
+                datetime.combine(date_from, datetime.min.time())
+            )),
+            ('create_date', '<=', fields.Datetime.to_string(
+                datetime.combine(date_to, datetime.max.time())
+            )),
+            # Tasks with deadline in the date range
+            '&',
+            ('date_deadline', '>=', date_from),
+            ('date_deadline', '<=', date_to),
+            # Tasks modified in the date range (updates)
+            '&',
             ('write_date', '>=', fields.Datetime.to_string(
                 datetime.combine(date_from, datetime.min.time())
             )),
@@ -159,10 +176,11 @@ class ProjectReportXlsx(models.AbstractModel):
         output.seek(0)
         return output.read()
 
-    def generate_timesheet_report(self, config):
+    def generate_timesheet_report(self, config, date_from=None, date_to=None):
         """Generate timesheet report in XLSX format"""
-        date_to = fields.Date.today()
-        date_from = date_to - timedelta(days=7)
+        if date_from is None or date_to is None:
+            date_to = fields.Date.today()
+            date_from = date_to - timedelta(days=7)
 
         domain = [
             ('project_id', '=', config.project_id.id),

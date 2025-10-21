@@ -37,20 +37,25 @@ class ProjectProject(models.Model):
                 if config.send_timesheet_report:
                     self._generate_and_send_timesheet_report(config)
 
-    def _generate_and_send_task_report(self, config, report_type):
+    def _generate_and_send_task_report(self, config, report_type, date_from=None, date_to=None):
         """Generate task report and send via email"""
+        # Get date range
+        if date_from is None or date_to is None:
+            if report_type == 'daily':
+                date_from = fields.Date.today()
+                date_to = fields.Date.today()
+            else:
+                date_to = fields.Date.today()
+                date_from = date_to - timedelta(days=7)
+
         # Generate XLSX report
         report_obj = self.env['project.report.xlsx']
-        xlsx_data = report_obj.generate_task_report(config, report_type)
+        xlsx_data = report_obj.generate_task_report(config, report_type, date_from, date_to)
 
-        # Get date range
+        # Create subject
         if report_type == 'daily':
-            date_from = fields.Date.today()
-            date_to = fields.Date.today()
             subject = f"Daily Task Report - {config.project_id.name} - {date_from}"
         else:
-            date_to = fields.Date.today()
-            date_from = date_to - timedelta(days=7)
             subject = f"Weekly Task Report - {config.project_id.name} - {date_from} to {date_to}"
 
         # Create attachment
@@ -75,15 +80,17 @@ class ProjectProject(models.Model):
             force_send=True
         )
 
-    def _generate_and_send_timesheet_report(self, config):
+    def _generate_and_send_timesheet_report(self, config, date_from=None, date_to=None):
         """Generate timesheet report and send via email"""
+        # Get date range
+        if date_from is None or date_to is None:
+            date_to = fields.Date.today()
+            date_from = date_to - timedelta(days=7)
+
         # Generate XLSX report
         report_obj = self.env['project.report.xlsx']
-        xlsx_data = report_obj.generate_timesheet_report(config)
+        xlsx_data = report_obj.generate_timesheet_report(config, date_from, date_to)
 
-        # Get date range
-        date_to = fields.Date.today()
-        date_from = date_to - timedelta(days=7)
         subject = f"Weekly Timesheet Report - {config.project_id.name} - {date_from} to {date_to}"
 
         # Create attachment

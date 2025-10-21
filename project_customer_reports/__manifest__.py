@@ -26,13 +26,14 @@
         'data/mail_template.xml',
         'data/cron_jobs.xml',
         'views/project_report_config_views.xml',
-        'views/project_project_views.xml',
         'views/send_report_wizard_views.xml',
+        'views/project_project_views.xml',
+
     ],
     'external_dependencies': {
         'python': ['xlsxwriter'],
     },
     'installable': True,
-    'application': False,
+    'application': True,
     'auto_install': False,
 }
