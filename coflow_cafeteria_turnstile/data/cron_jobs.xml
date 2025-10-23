@@ -1,0 +1,24 @@
+<odoo>
+  <record id="ir_cron_sync_zk_transactions" model="ir.cron">
+    <field name="name">Sync ZK Turnstile Transactions</field>
+    <field name="model_id" ref="model_cafeteria_transaction"/>
+    <field name="state">code</field>
+    <field name="code">model._cron_fetch_zk_transactions()</field>
+    <field name="interval_number">15</field>
+    <field name="interval_type">minutes</field>
+    <field name="numbercall">-1</field>
+    <field name="active">False</field>
+  </record>
+
+  <record id="ir_cron_process_monthly_allocations" model="ir.cron">
+    <field name="name">Process Monthly Balance Allocations</field>
+    <field name="model_id" ref="model_cafeteria_monthly_balance_allocation"/>
+    <field name="state">code</field>
+    <field name="code">model.action_process_monthly_allocations()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="numbercall">-1</field>
+    <field name="active">True</field>
+    <field name="priority">5</field>
+  </record>
+</odoo>

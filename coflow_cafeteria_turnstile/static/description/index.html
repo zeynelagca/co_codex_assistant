@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CoFlow | Yemekhane Turnike Entegrasyonu</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" />
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: "Inter", sans-serif;
+            line-height: 1.5;
+        }
+
+        .step-image {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            max-height: 700px;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .step-image:hover {
+            transform: scale(1.02);
+        }
+
+        .step-block {
+            max-width: 1000px;
+            margin: 0 auto 60px auto;
+        }
+
+        .feature-card {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(234, 94, 66, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="py-3" style="border-bottom: 1px solid #ea5e42;">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="assets/logo/coflow_logo.png" alt="Coflow Logo" style="height: 50px;" />
+            </div>
+            <div class="d-flex align-items-center">
+                <img src="assets/logo/odoo_logo.png" alt="Odoo Logo" style="height: 50px;" />
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="text-center py-5">
+        <div class="container">
+            <h1 class="fw-bold text-dark mb-3">Cafeteria Turnstile (ZKTeco K70) Integration</h1>
+            <p class="lead text-muted mb-4">
+                Yemekhane turnike kartları, geçiş kayıtları ve müşteri bazlı faturalama sistemi.
+            </p>
+            <a href="https://www.youtube.com/watch?v=D34A4bxjQlI" target="_blank" class="btn btn-lg btn-danger mb-4">
+                <i class="fa fa-youtube-play" aria-hidden="true"></i> Tanıtım Videosunu İzleyin
+            </a>
+            <br>
+            <a href="https://wa.me/905438021183" target="_blank" class="btn btn-lg mb-4" style="background-color: #25d366; color: white;">
+                <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp ile İletişim
+            </a>
+        </div>
+    </section>
+
+    <!-- Module Features -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5" style="color: #ea5e42;">Modül Özellikleri</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow border-0 rounded-4 text-center p-4 feature-card">
+                        <div class="mb-4">
+                            <i class="fa fa-download" aria-hidden="true" style="font-size: 40px; color: #ea5e42;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">1. Kolay Kurulum</h5>
+                        <p class="text-muted">Modülü Odoo uygulamalar panelinden arayarak kolayca yükleyin. Herhangi bir karmaşık konfigürasyon gerektirmez.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow border-0 rounded-4 text-center p-4 feature-card">
+                        <div class="mb-4">
+                            <i class="fa fa-credit-card" aria-hidden="true" style="font-size: 40px; color: #ea5e42;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">2. Kart Yönetimi</h5>
+                        <p class="text-muted">Müşteri bağlantılı turnike kartlarını oluşturun ve yönetin. Ön ödemeli ve sonradan ödemeli kart türleri desteklenir.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow border-0 rounded-4 text-center p-4 feature-card">
+                        <div class="mb-4">
+                            <i class="fa fa-exchange" aria-hidden="true" style="font-size: 40px; color: #ea5e42;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">3. Geçiş Kayıtları</h5>
+                        <p class="text-muted">ZKTeco K70 cihazından otomatik olarak geçiş kayıtlarını alın ve her geçişi detaylı şekilde takip edin.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 shadow border-0 rounded-4 text-center p-4 feature-card">
+                        <div class="mb-4">
+                            <i class="fa fa-file-text-o" aria-hidden="true" style="font-size: 40px; color: #ea5e42;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">4. Aylık Faturalama</h5>
+                        <p class="text-muted">Wizard ile müşteri ve tarih aralığı seçerek otomatik fatura oluşturun. Ürün bazlı veya geçiş bazlı faturalandırma.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 shadow border-0 rounded-4 text-center p-4 feature-card">
+                        <div class="mb-4">
+                            <i class="fa fa-users" aria-hidden="true" style="font-size: 40px; color: #ea5e42;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">5. Müşteri Entegrasyonu</h5>
+                        <p class="text-muted">Partner formuna kart sekmesi ekleyerek müşteri bazlı kart yönetimi. Tüm geçiş kayıtları müşteri ile ilişkilendirilir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module Steps with Images -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4" style="color: #ea5e42;">Nasıl Kullanılır?</h2>
+            <div class="step-block" style="margin-bottom: 40px;">
+                <a href="assets/screenshot/1.png" class="glightbox">
+                    <img src="assets/screenshot/1.png" class="img-fluid step-image w-100 shadow" />
+                </a>
+                <h5 class="fw-bold mt-3" style="font-size: 20px;">1. Modül Kurulumu</h5>
+                <p class="text-muted">
+                    Odoo uygulamalar panelinden "Cafeteria Turnstile" modülünü arayarak yükleyin.
+                </p>
+            </div>
+            <div class="step-block" style="margin-bottom: 40px;">
+                <a href="assets/screenshot/2.png" class="glightbox">
+                    <img src="assets/screenshot/2.png" class="img-fluid step-image w-100 shadow" />
+                </a>
+                <h5 class="fw-bold mt-3" style="font-size: 20px;">2. Kart Oluşturma</h5>
+                <p class="text-muted">
+                    Cafeteria menüsünden "Cards" bölümüne giderek yeni turnike kartları oluşturun.
+                </p>
+            </div>
+            <div class="step-block" style="margin-bottom: 40px;">
+                <a href="assets/screenshot/6.png" class="glightbox">
+                    <img src="assets/screenshot/6.png" class="img-fluid step-image w-100 shadow" />
+                </a>
+                <h5 class="fw-bold mt-3" style="font-size: 20px;">3. Kart Bilgileri</h5>
+                <p class="text-muted">
+                    Kart UID/Numarası, müşteri, kart türü (ön ödemeli/sonradan ödemeli) ve bakiye bilgilerini girin.
+                </p>
+            </div>
+            <div class="step-block" style="margin-bottom: 40px;">
+                <a href="assets/screenshot/3.png" class="glightbox">
+                    <img src="assets/screenshot/3.png" class="img-fluid step-image w-100 shadow" />
+                </a>
+                <h5 class="fw-bold mt-3" style="font-size: 20px;">4. Geçiş Kayıtları</h5>
+                <p class="text-muted">
+                    ZKTeco K70 cihazından otomatik olarak gelen geçiş kayıtlarını "Transactions" menüsünden görüntüleyin.
+                </p>
+            </div>
+            <div class="step-block" style="margin-bottom: 40px;">
+                <a href="assets/screenshot/7.png" class="glightbox">
+                    <img src="assets/screenshot/7.png" class="img-fluid step-image w-100 shadow" />
+                </a>
+                <h5 class="fw-bold mt-3" style="font-size: 20px;">5. Fatura Oluşturma</h5>
+                <p class="text-muted">
+                    Wizard ile müşteri ve tarih aralığı seçerek aylık faturaları otomatik olarak oluşturun.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: #ea5e42;">Hizmetlerimiz</h2>
+                <p class="text-muted">
+                    İşletmenizin dijital dönüşümünü hızlandıran uçtan uca çözümler sunuyoruz.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow border-0 rounded-4 text-center p-4 feature-card">
+                        <img src="assets/services/1.png" class="mb-3 mx-auto img-fluid" style="width: 200px; height: 120px; object-fit: contain;" />
+                        <h5 class="fw-bold mb-3">Odoo Tabanlı Kurumsal Çözümler</h5>
+                        <p class="text-muted">Benzersiz iş süreçlerinize özel Odoo ERP uygulamalarında uzmanız. Analizden dağıtıma kadar, operasyonel verimliliğinizi artıran, iş akışlarını otomatikleştiren ve büyümenizle birlikte ölçeklenen sorunsuz entegrasyon sağlıyoruz.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 shadow border-0 rounded-4 text-center p-4 feature-card">
+                        <img src="assets/services/2.png" class="mb-3 mx-auto img-fluid" style="width: 200px; height: 120px; object-fit: contain;" />
+                        <h5 class="fw-bold mb-3">Yapay Zeka</h5>
+                        <p class="text-muted">İş akışlarınızı optimize etmek ve daha akıllı karar verme süreçlerini etkinleştirmek için AI teknolojilerini kullanıyoruz, 
+                        verimliliği ve iş büyümesini artırıyoruz.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 shadow border-0 rounded-4 text-center p-4 feature-card">
+                        <img src="assets/services/3.png" class="mb-3 mx-auto img-fluid" style="width: 200px; height: 120px; object-fit: contain;" />
+                        <h5 class="fw-bold mb-3">İş Zekası</h5>
+                        <p class="text-muted">İş zekası çözümlerimizle verilerinizi eyleme dönüştürülebilir içgörülere dönüştürün, 
+                        bilinçli stratejik kararlar almanızı sağlayın.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5" style="border-top: 1px solid #ea5e42;">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Logo & Hakkımızda -->
+                <div class="col-md-4">
+                    <img src="assets/logo/coflow_logo.png" alt="Coflow Logo" class="mb-3"
+                        style="height: 40px; margin-right: 15px;" />
+                    <img src="assets/logo/odoo_logo.png" alt="Coflow Logo" class="mb-3"
+                        style="height: 40px; margin-left: 15px;" />
+                    <p class="text-muted">
+                        Coflow Enterprise Technology, insanların dijital dönüşümünü hızlandıran Odoo, AI ve BI çözümleri sunar.
+                    </p>
+                </div>
+
+                <!-- İletişim Bilgileri -->
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">İletişim</h5>
+                    <p class="mb-1"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>İTÜ Teknokent, Maslak, İstanbul</p>
+                    <p class="mb-1"><i class="fa fa-phone me-2" aria-hidden="true"></i>+90 543 802 11 83</p>
+                    <p class="mb-1"><i class="fa fa-envelope me-2" aria-hidden="true"></i>info@coflow.com.tr</p>
+                </div>
+
+                <!-- Hızlı Bağlantılar -->
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Hızlı Bağlantılar</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://coflow.com.tr/" class="text-decoration-none" style="color:#ea5e42;">Ana Sayfa</a></li>
+                        <li><a href="https://coflow.com.tr/" class="text-decoration-none" style="color:#ea5e42;">Hizmetler</a></li>
+                        <li><a href="https://coflow.com.tr/contactus" class="text-decoration-none" style="color:#ea5e42;">İletişim</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sosyal Medya & Telif -->
+            <div class="text-center mt-4 pt-3 border-top border-secondary">
+                <p class="mb-2">&copy; 2025 Coflow Enterprise Technology - Tüm hakları saklıdır.</p>
+                <div>
+                    <a href="https://www.instagram.com/coflowtr/" class="me-3"><i class="fa fa-instagram" aria-hidden="true" style="color:#ea5e42;"></i></a>
+                    <a href="https://www.linkedin.com/company/co-flow-tech/" class="me-3"><i class="fa fa-linkedin" aria-hidden="true" style="color:#ea5e42;"></i></a>
+                    <a href="mailto:info@coflow.com.tr"><i class="fa fa-envelope" aria-hidden="true" style="color:#ea5e42;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({
+            selector: ".glightbox"
+        });
+    </script>
+</body>
+
+</html>

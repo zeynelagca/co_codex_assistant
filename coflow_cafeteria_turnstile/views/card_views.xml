@@ -1,0 +1,72 @@
+<odoo>
+  <record id="view_cafeteria_card_tree" model="ir.ui.view">
+    <field name="name">cafeteria.card.tree</field>
+    <field name="model">cafeteria.card</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="partner_id"/>
+        <field name="card_type"/>
+        <field name="balance"/>
+        <field name="transaction_count"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_cafeteria_card_form" model="ir.ui.view">
+    <field name="name">cafeteria.card.form</field>
+    <field name="model">cafeteria.card</field>
+    <field name="arch" type="xml">
+      <form string="Cafeteria Card">
+        <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button name="action_view_balance_loads" type="object" class="oe_stat_button" icon="fa-money">
+              <field name="balance_load_count" widget="statinfo" string="Bakiye Yüklemeleri"/>
+            </button>
+            <button name="action_view_monthly_allocations" type="object" class="oe_stat_button" icon="fa-calendar">
+              <field name="monthly_allocation_count" widget="statinfo" string="Aylık Tahsisler"/>
+            </button>
+          </div>
+          <group>
+            <group>
+              <field name="name"/>
+              <field name="partner_id"/>
+              <field name="card_type"/>
+            </group>
+            <group>
+              <field name="balance"/>
+              <field name="active" widget="boolean_toggle"/>
+            </group>
+          </group>
+          <notebook>
+            <page string="Bakiye Yüklemeleri">
+              <field name="balance_load_ids" context="{'default_card_id': id}">
+                <tree>
+                  <field name="load_date"/>
+                  <field name="load_type"/>
+                  <field name="amount"/>
+                  <field name="used_amount"/>
+                  <field name="remaining_amount"/>
+                  <field name="state" widget="badge"/>
+                </tree>
+              </field>
+            </page>
+            <page string="Aylık Tahsisler">
+              <field name="monthly_allocation_ids" context="{'default_card_id': id}">
+                <tree>
+                  <field name="monthly_amount"/>
+                  <field name="allocation_day"/>
+                  <field name="next_allocation_date"/>
+                  <field name="state" widget="badge"/>
+                </tree>
+              </field>
+            </page>
+            <page string="Notlar">
+              <field name="note" placeholder="Notlarınızı buraya yazın..."/>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>

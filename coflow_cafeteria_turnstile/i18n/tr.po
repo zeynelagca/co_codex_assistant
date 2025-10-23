@@ -1,0 +1,137 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * coflow_cafeteria_turnstile
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-23 12:00:00\n"
+"PO-Revision-Date: 2025-01-23 12:00:00\n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model,name:coflow_cafeteria_turnstile.model_cafeteria_card
+msgid "Cafeteria Card (Turnike Kart)"
+msgstr "Yemekhane Kartı (Turnike Kart)"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model,name:coflow_cafeteria_turnstile.model_cafeteria_transaction
+msgid "Cafeteria Turnstile Transaction"
+msgstr "Yemekhane Turnike İşlemi"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_card__name
+msgid "Card UID / Number"
+msgstr "Kart UID / Numarası"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_card__partner_id
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_transaction__partner_id
+msgid "Customer / Owner"
+msgstr "Müşteri / Sahip"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_card__balance
+msgid "Balance"
+msgstr "Bakiye"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_transaction__timestamp
+msgid "Timestamp"
+msgstr "Zaman Damgası"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_transaction__price
+msgid "Price"
+msgstr "Fiyat"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_transaction__invoiced
+msgid "Invoiced"
+msgstr "Faturalandı"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_card__transaction_count
+msgid "Pass Count"
+msgstr "Geçiş Sayısı"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_transaction__device_ip
+msgid "Device IP"
+msgstr "Cihaz IP"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_transaction__device_sn
+msgid "Device SN"
+msgstr "Cihaz Seri No"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_transaction__invoice_line_id
+msgid "Invoice Line"
+msgstr "Fatura Kalemi"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_card__card_type
+msgid "Card Type"
+msgstr "Kart Tipi"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,selection:coflow_cafeteria_turnstile.field_cafeteria_card__card_type
+msgid "Prepaid"
+msgstr "Ön Ödemeli"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,selection:coflow_cafeteria_turnstile.field_cafeteria_card__card_type
+msgid "Postpaid"
+msgstr "Sonradan Ödemeli"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_card__active
+msgid "Active"
+msgstr "Aktif"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_card__note
+msgid "Note"
+msgstr "Not"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model,name:coflow_cafeteria_turnstile.model_cafeteria_guest_entry
+msgid "Cafeteria Guest Entry"
+msgstr "Yemekhane Misafir Girişi"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_guest_entry__partner_id
+msgid "Company"
+msgstr "Firma"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_guest_entry__entry_date
+msgid "Entry Date"
+msgstr "Giriş Tarihi"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_guest_entry__guest_count
+msgid "Guest Count"
+msgstr "Misafir Sayısı"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_guest_entry__price
+msgid "Unit Price"
+msgstr "Birim Fiyat"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.model.fields,field_description:coflow_cafeteria_turnstile.field_cafeteria_guest_entry__total_amount
+msgid "Total Amount"
+msgstr "Toplam Tutar"
+
+#. module: coflow_cafeteria_turnstile
+#: model:ir.actions.act_window,name:coflow_cafeteria_turnstile.action_cafeteria_guest_entry
+#: model:ir.ui.menu,name:coflow_cafeteria_turnstile.menu_cafeteria_guest_entries
+msgid "Guest Entries"
+msgstr "Misafir Girişleri"

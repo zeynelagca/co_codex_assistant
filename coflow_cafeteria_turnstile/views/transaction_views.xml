@@ -1,0 +1,36 @@
+<odoo>
+  <record id="view_cafeteria_transaction_tree" model="ir.ui.view">
+    <field name="name">cafeteria.transaction.tree</field>
+    <field name="model">cafeteria.transaction</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="timestamp"/>
+        <field name="card_uid"/>
+        <field name="partner_id"/>
+        <field name="device_ip"/>
+        <field name="price"/>
+        <field name="invoiced"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_cafeteria_transaction_form" model="ir.ui.view">
+    <field name="name">cafeteria.transaction.form</field>
+    <field name="model">cafeteria.transaction</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="card_id"/>
+            <field name="timestamp"/>
+            <field name="device_ip"/>
+            <field name="device_sn"/>
+            <field name="price"/>
+            <field name="invoiced"/>
+            <field name="invoice_line_id" readonly="1"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>

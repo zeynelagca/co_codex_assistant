@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View - Editable Top -->
+    <record id="view_cafeteria_guest_entry_tree" model="ir.ui.view">
+        <field name="name">cafeteria.guest.entry.tree</field>
+        <field name="model">cafeteria.guest.entry</field>
+        <field name="arch" type="xml">
+            <tree string="Guest Entries" editable="top">
+                <field name="entry_date"/>
+                <field name="partner_id" options="{'no_create': True, 'no_open': True}"/>
+                <field name="guest_count"/>
+                <field name="price"/>
+                <field name="total_amount" readonly="1"/>
+                <field name="invoiced" readonly="1"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_cafeteria_guest_entry_form" model="ir.ui.view">
+        <field name="name">cafeteria.guest.entry.form</field>
+        <field name="model">cafeteria.guest.entry</field>
+        <field name="arch" type="xml">
+            <form string="Guest Entry">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id" options="{'no_create': True}"/>
+                            <field name="entry_date"/>
+                            <field name="guest_count"/>
+                        </group>
+                        <group>
+                            <field name="price"/>
+                            <field name="total_amount" readonly="1"/>
+                            <field name="invoiced" readonly="1"/>
+                            <field name="invoice_line_id" readonly="1" invisible="invoiced == False"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note" placeholder="Ek notlarınızı buraya yazabilirsiniz..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_cafeteria_guest_entry_search" model="ir.ui.view">
+        <field name="name">cafeteria.guest.entry.search</field>
+        <field name="model">cafeteria.guest.entry</field>
+        <field name="arch" type="xml">
+            <search string="Guest Entries">
+                <field name="partner_id"/>
+                <field name="entry_date"/>
+                <filter string="Not Invoiced" name="not_invoiced" domain="[('invoiced', '=', False)]"/>
+                <filter string="Invoiced" name="invoiced" domain="[('invoiced', '=', True)]"/>
+                <separator/>
+                <filter string="This Month" name="this_month"
+                        domain="[('entry_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
+                                 ('entry_date', '&lt;=', (context_today() + relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
+                <filter string="Last Month" name="last_month"
+                        domain="[('entry_date', '&gt;=', (context_today() - relativedelta(months=1, day=1)).strftime('%Y-%m-%d')),
+                                 ('entry_date', '&lt;=', (context_today() - relativedelta(months=1, day=31)).strftime('%Y-%m-%d'))]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Company" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Entry Date" name="group_date" context="{'group_by': 'entry_date'}"/>
+                    <filter string="Invoiced Status" name="group_invoiced" context="{'group_by': 'invoiced'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_cafeteria_guest_entry" model="ir.actions.act_window">
+        <field name="name">Guest Entries</field>
+        <field name="res_model">cafeteria.guest.entry</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_not_invoiced': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Yeni misafir girişi oluşturun
+            </p>
+            <p>
+                Firma ve tarih bazında misafir girişlerini kaydedebilir,
+                faturalama işlemlerinde kullanabilirsiniz.
+            </p>
+        </field>
+    </record>
+</odoo>

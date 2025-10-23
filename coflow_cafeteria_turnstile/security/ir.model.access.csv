@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cafeteria_card,cafeteria.card,model_cafeteria_card,,1,1,1,1
+access_cafeteria_transaction,cafeteria.transaction,model_cafeteria_transaction,,1,1,1,1
+access_cafeteria_invoice_wizard,cafeteria.invoice.wizard,model_cafeteria_invoice_wizard,,1,1,1,1
+access_cafeteria_guest_entry,cafeteria.guest.entry,model_cafeteria_guest_entry,,1,1,1,1
+access_cafeteria_card_balance_load,cafeteria.card.balance.load,model_cafeteria_card_balance_load,,1,1,1,1
+access_cafeteria_monthly_balance_allocation,cafeteria.monthly.balance.allocation,model_cafeteria_monthly_balance_allocation,,1,1,1,1
