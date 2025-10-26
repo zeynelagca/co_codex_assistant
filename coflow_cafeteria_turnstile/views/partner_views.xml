@@ -6,7 +6,7 @@
     <field name="arch" type="xml">
       <div name="button_box" position="inside">
         <button name="%(action_open_cafeteria_invoice_wizard)d"
-                string="Yemekhane Faturası"
+                string="Catering Faturası"
                 type="action"
                 class="oe_stat_button"
                 icon="fa-cutlery"
@@ -14,7 +14,7 @@
       </div>
       <sheet position="inside">
         <notebook position="inside">
-          <page string="Cafeteria Cards">
+          <page string="Catering Kartları">
             <field name="cafeteria_card_ids" context="{'default_partner_id': active_id}">
               <tree editable="bottom">
                 <field name="name"/>

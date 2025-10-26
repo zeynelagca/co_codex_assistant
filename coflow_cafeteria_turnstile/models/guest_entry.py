@@ -1,56 +1,57 @@
-from odoo import models, fields, api, _
+from odoo import models, fields, api
+
 
 class CafeteriaGuestEntry(models.Model):
     _name = 'cafeteria.guest.entry'
-    _description = 'Cafeteria Guest Entry'
+    _description = 'Catering Misafir Girişi'
     _order = 'entry_date desc, id desc'
 
     partner_id = fields.Many2one(
         'res.partner',
-        string='Company',
+        string='Firma',
         required=True,
         ondelete='restrict',
-        help='Misafirin bağlı olduğu firma'
+        help='Misafirin bağlantılı olduğu firma',
     )
     entry_date = fields.Date(
-        string='Entry Date',
+        string='Giriş Tarihi',
         required=True,
         default=fields.Date.context_today,
-        help='Misafir giriş tarihi'
+        help='Misafir girişinin gerçekleştiği tarih',
     )
     guest_count = fields.Integer(
-        string='Guest Count',
+        string='Misafir Sayısı',
         required=True,
         default=1,
-        help='Misafir sayısı'
+        help='Toplam misafir adedi',
     )
     price = fields.Float(
-        string='Unit Price',
+        string='Birim Fiyat',
         digits=(12, 2),
-        help='Kişi başı birim fiyat'
+        help='Kişi başına birim fiyat',
     )
     total_amount = fields.Float(
-        string='Total Amount',
+        string='Toplam Tutar',
         compute='_compute_total_amount',
         store=True,
         digits=(12, 2),
-        help='Toplam tutar (Misafir sayısı × Birim fiyat)'
+        help='Misafir sayısı ile birim fiyatın çarpımı',
     )
     invoiced = fields.Boolean(
-        string='Invoiced',
+        string='Faturalandı',
         default=False,
         index=True,
-        help='Faturalandı mı?'
+        help='Kayıt faturaya dahil edildi mi?',
     )
     invoice_line_id = fields.Many2one(
         'account.move.line',
-        string='Invoice Line',
+        string='İlgili Fatura Kalemi',
         readonly=True,
-        help='İlgili fatura kalemi'
+        help='Kayıt faturaya işlendiğinde ilişkilendirilen satır',
     )
     note = fields.Text(
-        string='Note',
-        help='Ek notlar'
+        string='Not',
+        help='Ek açıklamalar',
     )
 
     @api.depends('guest_count', 'price')

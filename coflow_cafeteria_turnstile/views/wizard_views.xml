@@ -1,6 +1,6 @@
 <odoo>
   <record id="action_open_cafeteria_invoice_wizard" model="ir.actions.act_window">
-    <field name="name">Cafeteria Invoice Wizard</field>
+    <field name="name">Catering Fatura Sihirbazı</field>
     <field name="res_model">cafeteria.invoice.wizard</field>
     <field name="view_mode">form</field>
     <field name="target">new</field>
@@ -11,7 +11,7 @@
     <field name="name">cafeteria.invoice.wizard.form</field>
     <field name="model">cafeteria.invoice.wizard</field>
     <field name="arch" type="xml">
-      <form string="Kafeterya Faturası Oluştur">
+      <form string="Catering Faturası Oluştur">
         <group>
           <group string="Temel Bilgiler">
             <field name="partner_id" options="{'no_open': True}" required="1"/>
@@ -19,9 +19,11 @@
             <field name="date_to" required="1"/>
           </group>
           <group string="Ürün Ayarları">
-            <field name="product_id" placeholder="Kart geçişleri için ürün (Opsiyonel)"/>
+            <field name="product_id" placeholder="Kart geçişleri için ürün (opsiyonel)"/>
             <field name="include_guest_entries" widget="boolean_toggle"/>
-            <field name="guest_product_id" placeholder="Misafir girişleri için ürün (Opsiyonel)" invisible="not include_guest_entries"/>
+            <field name="guest_product_id"
+                   placeholder="Misafir girişleri için ürün (opsiyonel)"
+                   invisible="not include_guest_entries"/>
           </group>
         </group>
 

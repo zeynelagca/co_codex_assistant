@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Bakiye Yükleme Tree View -->
     <record id="view_cafeteria_balance_load_tree" model="ir.ui.view">
         <field name="name">cafeteria.card.balance.load.tree</field>
         <field name="model">cafeteria.card.balance.load</field>
         <field name="arch" type="xml">
-            <tree string="Bakiye Yüklemeleri" decoration-success="state=='confirmed'" decoration-muted="state=='cancelled'">
+            <tree string="Bakiye Yüklemeleri"
+                  decoration-success="state=='confirmed'"
+                  decoration-muted="state=='cancelled'">
                 <field name="load_date"/>
                 <field name="card_id"/>
                 <field name="partner_id"/>
@@ -16,23 +17,32 @@
                 <field name="used_amount" sum="Toplam"/>
                 <field name="remaining_amount" sum="Toplam"/>
                 <field name="transaction_count"/>
-                <field name="state" widget="badge" decoration-success="state == 'confirmed'" decoration-danger="state == 'cancelled'"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'confirmed'"
+                       decoration-danger="state == 'cancelled'"/>
             </tree>
         </field>
     </record>
 
-    <!-- Bakiye Yükleme Form View -->
     <record id="view_cafeteria_balance_load_form" model="ir.ui.view">
         <field name="name">cafeteria.card.balance.load.form</field>
         <field name="model">cafeteria.card.balance.load</field>
         <field name="arch" type="xml">
-            <form string="Bakiye Yükleme">
+            <form string="Bakiye Yüklemesi">
                 <header>
-                    <button name="action_confirm" string="Onayla" type="object"
-                            class="oe_highlight" invisible="state != 'draft'"/>
-                    <button name="action_cancel" string="İptal Et" type="object"
-                            invisible="state == 'cancelled'" confirm="Bu yüklemeyi iptal etmek istediğinizden emin misiniz?"/>
-                    <button name="action_set_to_draft" string="Taslağa Al" type="object"
+                    <button name="action_confirm"
+                            string="Onayla"
+                            type="object"
+                            class="oe_highlight"
+                            invisible="state != 'draft'"/>
+                    <button name="action_cancel"
+                            string="İptal Et"
+                            type="object"
+                            invisible="state == 'cancelled'"
+                            confirm="Bu yüklemeyi iptal etmek istediğinizden emin misiniz?"/>
+                    <button name="action_set_to_draft"
+                            string="Taslağa Al"
+                            type="object"
                             invisible="state != 'cancelled'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
                 </header>
@@ -78,7 +88,6 @@
         </field>
     </record>
 
-    <!-- Bakiye Yükleme Search View -->
     <record id="view_cafeteria_balance_load_search" model="ir.ui.view">
         <field name="name">cafeteria.card.balance.load.search</field>
         <field name="model">cafeteria.card.balance.load</field>
@@ -91,61 +100,52 @@
                 <filter name="filter_confirmed" string="Onaylandı" domain="[('state', '=', 'confirmed')]"/>
                 <filter name="filter_cancelled" string="İptal Edildi" domain="[('state', '=', 'cancelled')]"/>
                 <separator/>
-                <filter name="filter_manual" string="Manuel" domain="[('load_type', '=', 'manual')]"/>
-                <filter name="filter_monthly" string="Aylık" domain="[('load_type', '=', 'monthly')]"/>
-                <separator/>
-                <filter name="filter_this_month" string="Bu Ay" domain="[('load_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')), ('load_date', '&lt;', (context_today() + relativedelta(months=1, day=1)).strftime('%Y-%m-%d'))]"/>
-                <filter name="filter_last_month" string="Geçen Ay" domain="[('load_date', '&gt;=', (context_today() - relativedelta(months=1, day=1)).strftime('%Y-%m-%d')), ('load_date', '&lt;', (context_today() - relativedelta(day=1) + relativedelta(day=31, days=1)).strftime('%Y-%m-%d'))]"/>
                 <group expand="0" string="Grupla">
                     <filter name="group_card" string="Kart" context="{'group_by': 'card_id'}"/>
                     <filter name="group_partner" string="Müşteri" context="{'group_by': 'partner_id'}"/>
-                    <filter name="group_load_type" string="Yükleme Tipi" context="{'group_by': 'load_type'}"/>
                     <filter name="group_state" string="Durum" context="{'group_by': 'state'}"/>
-                    <filter name="group_month" string="Ay" context="{'group_by': 'load_date:month'}"/>
                 </group>
             </search>
         </field>
     </record>
 
-    <!-- Aylık Tahsis Tree View -->
     <record id="view_cafeteria_monthly_allocation_tree" model="ir.ui.view">
         <field name="name">cafeteria.monthly.balance.allocation.tree</field>
         <field name="model">cafeteria.monthly.balance.allocation</field>
         <field name="arch" type="xml">
-            <tree string="Aylık Bakiye Tahsisleri" decoration-success="state=='active'" decoration-muted="state=='completed'">
+            <tree string="Aylık Tahsisler" decoration-info="state=='suspended'" decoration-muted="state=='completed'">
                 <field name="card_id"/>
                 <field name="partner_id"/>
                 <field name="monthly_amount"/>
                 <field name="allocation_day"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
-                <field name="allocation_date"/>
                 <field name="next_allocation_date"/>
+                <field name="state" widget="badge"/>
                 <field name="load_count"/>
-                <field name="state" widget="badge" decoration-success="state == 'active'" decoration-warning="state == 'suspended'" decoration-info="state == 'completed'"/>
-                <field name="active" widget="boolean_toggle"/>
+                <field name="active"/>
             </tree>
         </field>
     </record>
 
-    <!-- Aylık Tahsis Form View -->
     <record id="view_cafeteria_monthly_allocation_form" model="ir.ui.view">
         <field name="name">cafeteria.monthly.balance.allocation.form</field>
         <field name="model">cafeteria.monthly.balance.allocation</field>
         <field name="arch" type="xml">
             <form string="Aylık Bakiye Tahsisi">
                 <header>
+                    <button name="action_suspend" string="Askıya Al" type="object" class="btn-secondary"
+                            invisible="state != 'active'"/>
                     <button name="action_activate" string="Aktif Et" type="object"
-                            class="oe_highlight" invisible="state == 'active'"/>
-                    <button name="action_suspend" string="Askıya Al" type="object"
-                            invisible="state != 'active'" confirm="Bu tahsisi askıya almak istediğinizden emin misiniz?"/>
-                    <button name="action_complete" string="Tamamla" type="object"
-                            invisible="state == 'completed'" confirm="Bu tahsisi tamamlamak istediğinizden emin misiniz?"/>
+                            invisible="state != 'suspended'"/>
+                    <button name="action_complete" string="Tamamlandı" type="object"
+                            class="btn-secondary"
+                            invisible="state == 'completed'"/>
                     <field name="state" widget="statusbar" statusbar_visible="active,suspended,completed"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="action_view_loads" type="object" class="oe_stat_button" icon="fa-money">
+                        <button name="action_view_loads" type="object" class="oe_stat_button" icon="fa-download">
                             <field name="load_count" widget="statinfo" string="Yüklemeler"/>
                         </button>
                     </div>
@@ -191,7 +191,6 @@
         </field>
     </record>
 
-    <!-- Aylık Tahsis Search View -->
     <record id="view_cafeteria_monthly_allocation_search" model="ir.ui.view">
         <field name="name">cafeteria.monthly.balance.allocation.search</field>
         <field name="model">cafeteria.monthly.balance.allocation</field>
@@ -200,8 +199,8 @@
                 <field name="card_id"/>
                 <field name="partner_id"/>
                 <filter name="filter_active" string="Aktif" domain="[('state', '=', 'active')]"/>
-                <filter name="filter_suspended" string="Askıya Alınmış" domain="[('state', '=', 'suspended')]"/>
-                <filter name="filter_completed" string="Tamamlanmış" domain="[('state', '=', 'completed')]"/>
+                <filter name="filter_suspended" string="Askıya Alındı" domain="[('state', '=', 'suspended')]"/>
+                <filter name="filter_completed" string="Tamamlandı" domain="[('state', '=', 'completed')]"/>
                 <separator/>
                 <filter name="filter_active_records" string="Aktif Kayıtlar" domain="[('active', '=', True)]"/>
                 <group expand="0" string="Grupla">
@@ -213,7 +212,6 @@
         </field>
     </record>
 
-    <!-- Actions -->
     <record id="action_cafeteria_balance_load" model="ir.actions.act_window">
         <field name="name">Bakiye Yüklemeleri</field>
         <field name="res_model">cafeteria.card.balance.load</field>
@@ -224,7 +222,7 @@
                 Kart bakiye yüklemesi oluşturun
             </p>
             <p>
-                Kartlara bakiye yükleyerek kullanıcıların kafeterya hizmetlerinden yararlanmasını sağlayabilirsiniz.
+                Kartlara bakiye yükleyerek kullanıcıların catering hizmetlerinden yararlanmasını sağlayabilirsiniz.
             </p>
         </field>
     </record>

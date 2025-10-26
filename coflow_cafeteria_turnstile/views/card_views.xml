@@ -3,7 +3,7 @@
     <field name="name">cafeteria.card.tree</field>
     <field name="model">cafeteria.card</field>
     <field name="arch" type="xml">
-      <tree>
+      <tree string="Catering Kartları">
         <field name="name"/>
         <field name="partner_id"/>
         <field name="card_type"/>
@@ -17,7 +17,7 @@
     <field name="name">cafeteria.card.form</field>
     <field name="model">cafeteria.card</field>
     <field name="arch" type="xml">
-      <form string="Cafeteria Card">
+      <form string="Catering Kartı">
         <sheet>
           <div class="oe_button_box" name="button_box">
             <button name="action_view_balance_loads" type="object" class="oe_stat_button" icon="fa-money">

@@ -1,18 +1,45 @@
 <odoo>
-  <menuitem id="menu_cafeteria_root" name="Cafeteria" sequence="90"/>
+  <menuitem id="menu_cafeteria_root" name="Catering" sequence="90"/>
+
   <record id="action_cafeteria_card_tree" model="ir.actions.act_window">
-    <field name="name">Cards</field>
+    <field name="name">Kartlar</field>
     <field name="res_model">cafeteria.card</field>
     <field name="view_mode">tree,form</field>
   </record>
+
   <record id="action_cafeteria_transaction_tree" model="ir.actions.act_window">
-    <field name="name">Transactions</field>
+    <field name="name">Geçişler</field>
     <field name="res_model">cafeteria.transaction</field>
     <field name="view_mode">tree,form</field>
   </record>
-  <menuitem id="menu_cafeteria_cards" parent="menu_cafeteria_root" name="Cards" action="action_cafeteria_card_tree" sequence="10"/>
-  <menuitem id="menu_cafeteria_transactions" parent="menu_cafeteria_root" name="Transactions" action="action_cafeteria_transaction_tree" sequence="20"/>
-  <menuitem id="menu_cafeteria_balance_loads" parent="menu_cafeteria_root" name="Bakiye Yüklemeleri" action="action_cafeteria_balance_load" sequence="30"/>
-  <menuitem id="menu_cafeteria_monthly_allocations" parent="menu_cafeteria_root" name="Aylık Tahsisler" action="action_cafeteria_monthly_allocation" sequence="40"/>
-  <menuitem id="menu_cafeteria_guest_entries" parent="menu_cafeteria_root" name="Guest Entries" action="action_cafeteria_guest_entry" sequence="50"/>
+
+  <menuitem id="menu_cafeteria_cards"
+            parent="menu_cafeteria_root"
+            name="Kartlar"
+            action="action_cafeteria_card_tree"
+            sequence="10"/>
+
+  <menuitem id="menu_cafeteria_transactions"
+            parent="menu_cafeteria_root"
+            name="Geçişler"
+            action="action_cafeteria_transaction_tree"
+            sequence="20"/>
+
+  <menuitem id="menu_cafeteria_balance_loads"
+            parent="menu_cafeteria_root"
+            name="Bakiye Yüklemeleri"
+            action="action_cafeteria_balance_load"
+            sequence="30"/>
+
+  <menuitem id="menu_cafeteria_monthly_allocations"
+            parent="menu_cafeteria_root"
+            name="Aylık Tahsisler"
+            action="action_cafeteria_monthly_allocation"
+            sequence="40"/>
+
+  <menuitem id="menu_cafeteria_guest_entries"
+            parent="menu_cafeteria_root"
+            name="Misafir Girişleri"
+            action="action_cafeteria_guest_entry"
+            sequence="50"/>
 </odoo>

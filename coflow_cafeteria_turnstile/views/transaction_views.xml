@@ -3,7 +3,7 @@
     <field name="name">cafeteria.transaction.tree</field>
     <field name="model">cafeteria.transaction</field>
     <field name="arch" type="xml">
-      <tree>
+      <tree string="Catering Geçişleri">
         <field name="timestamp"/>
         <field name="card_uid"/>
         <field name="partner_id"/>
@@ -18,7 +18,7 @@
     <field name="name">cafeteria.transaction.form</field>
     <field name="model">cafeteria.transaction</field>
     <field name="arch" type="xml">
-      <form>
+      <form string="Catering Geçişi">
         <sheet>
           <group>
             <field name="card_id"/>

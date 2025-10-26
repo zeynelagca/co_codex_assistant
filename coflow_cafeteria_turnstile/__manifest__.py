@@ -1,12 +1,13 @@
 {
-    "name": "Cafeteria Turnstile (ZKTeco K70) Integration",
+    "name": "Catering Turnike Yazılımı",
     "version": "17.0.1.0.0",
-    "summary": "Yemekhane turnike kartları, geçiş kayıtları ve müşteri bazlı faturalama",
+    "summary": "Catering kartları, turnike geçişleri ve müşteri bazlı faturalama",
     "description": "ZKTeco K70 ile entegrasyon; kart yönetimi; aylık fatura; partner sekmesi ve raporlar.",
     "category": "Operations/Attendance",
     "author": "Coflow Teknoloji",
     "website": "https://coflow.com.tr",
     "license": "LGPL-3",
+    "icon": "@static/icon.png",
     "depends": ["base", "account", "product", "mail"],
     "data": [
         "views/wizard_views.xml",
