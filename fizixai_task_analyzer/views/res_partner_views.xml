@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Partner Form View - Add GitHub and AI Configuration -->
+    <record id="view_partner_form_inherit_fizixai" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.fizixai</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Add new page for AI & GitHub Configuration -->
+            <xpath expr="//notebook" position="inside">
+                <page string="AI &amp; GitHub" name="ai_github_config" attrs="{'invisible': [('is_company', '=', False)]}">
+                    <group>
+                        <group string="GitHub Configuration">
+                            <field name="github_repo_url" placeholder="https://github.com/username/repo"/>
+                            <field name="github_token" password="True"/>
+                            <field name="github_branch"/>
+                        </group>
+                        <group string="Claude AI Configuration">
+                            <field name="claude_api_key" password="True"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="AI Analysis Settings">
+                            <field name="enable_ai_analysis"/>
+                            <field name="ai_auto_trigger" attrs="{'invisible': [('enable_ai_analysis', '=', False)]}"/>
+                            <field name="ai_trigger_on_stage_change" attrs="{'invisible': [('enable_ai_analysis', '=', False)]}"/>
+                        </group>
+                        <group string="Auto Development">
+                            <field name="enable_auto_development"/>
+                            <field name="auto_dev_max_complexity" attrs="{'invisible': [('enable_auto_development', '=', False)]}"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="AI Statistics">
+                            <field name="ai_analyzed_tickets_count"/>
+                            <field name="ai_analyzed_tasks_count"/>
+                            <field name="github_prs_count"/>
+                        </group>
+                        <group>
+                            <button name="action_view_ai_analyzed_tickets"
+                                    string="View AI Analyzed Tickets"
+                                    type="object"
+                                    class="btn-link"
+                                    attrs="{'invisible': [('ai_analyzed_tickets_count', '=', 0)]}"/>
+                            <button name="action_view_github_prs"
+                                    string="View GitHub PRs"
+                                    type="object"
+                                    class="btn-link"
+                                    attrs="{'invisible': [('github_prs_count', '=', 0)]}"/>
+                        </group>
+                    </group>
+
+                    <group string="Help">
+                        <div class="text-muted">
+                            <p><strong>Customer-Specific GitHub Configuration:</strong></p>
+                            <ul>
+                                <li>Configure GitHub repository for this customer's tickets/tasks</li>
+                                <li>When a ticket is created for this customer, code changes will be pushed to their repository</li>
+                                <li>Leave empty to use project or global GitHub settings</li>
+                            </ul>
+                            <p><strong>AI Settings:</strong></p>
+                            <ul>
+                                <li>Enable AI analysis for all tickets/tasks related to this customer</li>
+                                <li>Auto-trigger: Analyze immediately when ticket/task is created</li>
+                                <li>Stage trigger: Analyze when ticket/task stage changes</li>
+                            </ul>
+                        </div>
+                    </group>
+                </page>
+            </xpath>
+
+            <!-- Add smart buttons for AI stats -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" name="action_view_ai_analyzed_tickets" type="object" icon="fa-robot"
+                        attrs="{'invisible': [('ai_analyzed_tickets_count', '=', 0)]}">
+                    <field name="ai_analyzed_tickets_count" widget="statinfo" string="AI Tickets"/>
+                </button>
+                <button class="oe_stat_button" name="action_view_github_prs" type="object" icon="fa-github"
+                        attrs="{'invisible': [('github_prs_count', '=', 0)]}">
+                    <field name="github_prs_count" widget="statinfo" string="GitHub PRs"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

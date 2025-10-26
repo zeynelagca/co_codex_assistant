@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ai_analysis_history_user,ai.analysis.history.user,model_ai_analysis_history,base.group_user,1,0,0,0
+access_ai_analysis_history_manager,ai.analysis.history.manager,model_ai_analysis_history,project.group_project_manager,1,1,1,1
+access_ai_analysis_history_system,ai.analysis.history.system,model_ai_analysis_history,base.group_system,1,1,1,1
