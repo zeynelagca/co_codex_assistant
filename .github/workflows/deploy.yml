@@ -1,0 +1,76 @@
+name: Build & Deploy Odoo Addons (co_codex_assistant → /mnt/extra-addons)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  deploy-addons:
+    runs-on: ubuntu-latest
+
+    env:
+      # Hedef dizin override edilebilir
+      REMOTE_ADDONS_DIR: ${{ secrets.REMOTE_ADDONS_DIR || '/mnt/extra-addons' }}
+      # co_codex_assistant içinde modüllerin konumu (root ise ".")
+      ADDONS_SUBDIR: "."
+      # co_codex_assistant repo slug: <owner>/co_codex_assistant
+      CO_CODEX_REPO: ${{ format('{0}/{1}', github.repository_owner, 'co_codex_assistant') }}
+
+    steps:
+      - name: Checkout current repo (optional)
+        uses: actions/checkout@v4
+
+      - name: Checkout co_codex_assistant
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.CO_CODEX_REPO }}
+          path: co_codex_assistant
+          # Özel repo ise token ver:
+          token: ${{ secrets.GH_TOKEN || github.token }}
+
+      - name: List modules to be deployed
+        run: |
+          echo "Modules under co_codex_assistant/${ADDONS_SUBDIR}:"
+          ls -la "co_codex_assistant/${ADDONS_SUBDIR}"
+
+      - name: Ensure remote target directory exists
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script: |
+            mkdir -p "${{ env.REMOTE_ADDONS_DIR }}"
+            # İstersen sahipliği değiştir (sudo gerektirebilir):
+            # sudo chown -R $USER:$USER "${{ env.REMOTE_ADDONS_DIR }}"
+
+      - name: Rsync addons to /mnt/extra-addons
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avz --delete --exclude='.git/' --exclude='.github/' --exclude='**/__pycache__/' --exclude='**/.pytest_cache/' --exclude='**/.venv/' --exclude='**/.idea/' --exclude='**/.vscode/'
+          path: co_codex_assistant/${{ env.ADDONS_SUBDIR }}/
+          remote_path: ${{ env.REMOTE_ADDONS_DIR }}/
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_port: ${{ secrets.SSH_PORT || 22 }}
+
+      - name: (Optional) Restart Odoo service
+        if: ${{ always() }}
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script: |
+            # Servis adını kendi ortamına göre düzelt (ör: odoo, odoo16, odoo17, docker vs.)
+            # systemctl varsa:
+            if command -v systemctl >/dev/null 2>&1; then
+              sudo systemctl restart odoo || true
+            fi
+            # Docker/Compose kullanıyorsan örnek:
+            # docker compose -f /path/to/docker-compose.yml restart odoo || true
