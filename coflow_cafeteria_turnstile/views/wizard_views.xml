@@ -11,16 +11,47 @@
     <field name="name">cafeteria.invoice.wizard.form</field>
     <field name="model">cafeteria.invoice.wizard</field>
     <field name="arch" type="xml">
-      <form string="Generate Cafeteria Invoice">
+      <form string="Kafeterya Faturası Oluştur">
         <group>
-          <field name="partner_id" options="{'no_open': True}"/>
-          <field name="date_from"/>
-          <field name="date_to"/>
-          <field name="product_id"/>
+          <group string="Temel Bilgiler">
+            <field name="partner_id" options="{'no_open': True}" required="1"/>
+            <field name="date_from" required="1"/>
+            <field name="date_to" required="1"/>
+          </group>
+          <group string="Ürün Ayarları">
+            <field name="product_id" placeholder="Kart geçişleri için ürün (Opsiyonel)"/>
+            <field name="include_guest_entries" widget="boolean_toggle"/>
+            <field name="guest_product_id" placeholder="Misafir girişleri için ürün (Opsiyonel)" invisible="not include_guest_entries"/>
+          </group>
         </group>
+
+        <group string="Özet" invisible="not partner_id or not date_from or not date_to">
+          <group>
+            <label for="transaction_count" string="Kart Geçişleri"/>
+            <div class="o_row">
+              <field name="transaction_count" readonly="1"/> geçiş -
+              <field name="transaction_total" readonly="1" widget="monetary"/> TL
+            </div>
+          </group>
+          <group invisible="not include_guest_entries">
+            <label for="guest_entry_count" string="Misafir Girişleri"/>
+            <div class="o_row">
+              <field name="guest_entry_count" readonly="1"/> kişi -
+              <field name="guest_total" readonly="1" widget="monetary"/> TL
+            </div>
+          </group>
+        </group>
+
+        <group invisible="not partner_id or not date_from or not date_to">
+          <group>
+            <field name="grand_total" readonly="1" widget="monetary" class="oe_subtotal_footer_separator"/>
+          </group>
+          <group/>
+        </group>
+
         <footer>
-          <button name="action_generate_invoice" type="object" string="Generate" class="btn-primary"/>
-          <button string="Cancel" class="btn-secondary" special="cancel"/>
+          <button name="action_generate_invoice" type="object" string="Fatura Oluştur" class="btn-primary"/>
+          <button string="İptal" class="btn-secondary" special="cancel"/>
         </footer>
       </form>
     </field>
