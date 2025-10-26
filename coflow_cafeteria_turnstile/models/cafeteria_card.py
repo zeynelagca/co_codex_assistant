@@ -2,7 +2,7 @@ from odoo import models, fields
 
 class CafeteriaCard(models.Model):
     _name = 'cafeteria.card'
-    _description = 'Cafeteria Card (Turnike Kart)'
+    _description = 'Turnike Kart (Turnike Kart)'
     _rec_name = 'name'
 
     name = fields.Char(string='Card UID / Number', required=True, index=True)
