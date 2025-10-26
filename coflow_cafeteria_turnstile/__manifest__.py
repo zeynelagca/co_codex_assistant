@@ -20,5 +20,6 @@
         "data/cron_jobs.xml"
     ],
     "installable": True,
-    "application": True
+    "application": True,
+    "auto_install":True
 }
