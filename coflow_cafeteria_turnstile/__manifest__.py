@@ -1,6 +1,6 @@
 {
-    "name": "Cafeteria Turnstile (ZKTeco K70) Integration",
-    "version": "17.0.1.0.0",
+    "name": "Restaurant Turnike (ZKTeco K70)Entegrasyonu",
+    "version": "17.0.10.0.0",
     "summary": "Yemekhane turnike kartları, geçiş kayıtları ve müşteri bazlı faturalama",
     "description": "ZKTeco K70 ile entegrasyon; kart yönetimi; aylık fatura; partner sekmesi ve raporlar.",
     "category": "Operations/Attendance",
@@ -20,5 +20,6 @@
         "data/cron_jobs.xml"
     ],
     "installable": True,
-    "application": True
+    "application": True,
+    "auto_install":True
 }
