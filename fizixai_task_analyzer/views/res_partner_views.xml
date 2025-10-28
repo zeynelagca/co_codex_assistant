@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Partner Form View - Add GitHub and AI Configuration -->
-    <record id="view_partner_form_inherit_fizixai" model="ir.ui.view">
-        <field name="name">res.partner.form.inherit.fizixai</field>
+    <record id="view_partner_form_inherit_coflow" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.coflow</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">

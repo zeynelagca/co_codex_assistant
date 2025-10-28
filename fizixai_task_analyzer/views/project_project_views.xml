@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Project Form View - Add GitHub and AI Configuration -->
-    <record id="view_project_form_inherit_fizixai" model="ir.ui.view">
-        <field name="name">project.project.form.inherit.fizixai</field>
+    <record id="view_project_form_inherit_coflow" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.coflow</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">

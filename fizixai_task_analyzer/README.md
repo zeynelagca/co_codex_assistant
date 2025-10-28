@@ -1,4 +1,4 @@
-# FizixAI Task Analyzer
+# CoFlow Task Analyzer
 
 AI-powered task and ticket analysis system for Odoo 17, featuring automatic complexity scoring, solution suggestions, and GitHub integration with Claude AI.
 
@@ -46,7 +46,7 @@ pip install anthropic PyGithub requests
 
 1. Copy the `fizixai_task_analyzer` folder to your Odoo addons directory
 2. Update the app list in Odoo
-3. Install "FizixAI Task Analyzer" module
+3. Install "CoFlow Task Analyzer" module
 
 ### 3. Configure API Keys
 
@@ -62,9 +62,9 @@ You'll need:
 Navigate to Settings > Technical > Parameters > System Parameters
 
 Add the following parameters (optional, can be configured per project/customer):
-- `fizixai.claude_api_key`: Your Claude API key
-- `fizixai.github_repo_url`: Default GitHub repository URL
-- `fizixai.github_token`: Default GitHub PAT
+- `coflow.claude_api_key`: Your Claude API key
+- `coflow.github_repo_url`: Default GitHub repository URL
+- `coflow.github_token`: Default GitHub PAT
 
 ### Project Configuration
 
@@ -126,7 +126,7 @@ Same as tasks - the system works identically for helpdesk tickets.
 When auto-development is enabled and a task has low complexity:
 
 1. AI generates code solution
-2. System creates a new branch: `fizixai/task-{id}-{name}`
+2. System creates a new branch: `coflow/task-{id}-{name}`
 3. Code is committed to the branch
 4. Pull request is created automatically
 5. GitHub PR URL is saved in the task
@@ -228,8 +228,8 @@ This is normal for:
 ## Support
 
 For issues, feature requests, or questions:
-- GitHub: https://github.com/fizixai/odoo-task-analyzer
-- Email: support@fizixai.com
+- GitHub: https://github.com/coflow/odoo-task-analyzer
+- Email: support@coflow.com.tr
 
 ## License
 
@@ -237,5 +237,5 @@ LGPL-3
 
 ## Credits
 
-Developed by FizixAI
+Developed by CoFlow
 Powered by Anthropic Claude AI

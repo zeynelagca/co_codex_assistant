@@ -1,4 +1,4 @@
-# FizixAI Task Analyzer Python Dependencies
+# CoFlow Task Analyzer Python Dependencies
 
 # Claude AI (Anthropic)
 anthropic>=0.18.0

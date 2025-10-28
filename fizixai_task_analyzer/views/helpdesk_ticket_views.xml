@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Helpdesk Ticket Form View - Add AI Analysis Fields -->
-    <record id="view_helpdesk_ticket_form_inherit_fizixai" model="ir.ui.view">
-        <field name="name">helpdesk.ticket.form.inherit.fizixai</field>
+    <record id="view_helpdesk_ticket_form_inherit_coflow" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.form.inherit.coflow</field>
         <field name="model">helpdesk.ticket</field>
         <field name="inherit_id" ref="odoo_website_helpdesk.support_ticket_view_form"/>
         <field name="arch" type="xml">
@@ -73,8 +73,8 @@
     </record>
 
     <!-- Helpdesk Ticket Tree View - Add AI fields -->
-    <record id="view_helpdesk_ticket_tree_inherit_fizixai" model="ir.ui.view">
-        <field name="name">helpdesk.ticket.tree.inherit.fizixai</field>
+    <record id="view_helpdesk_ticket_tree_inherit_coflow" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.tree.inherit.coflow</field>
         <field name="model">helpdesk.ticket</field>
         <field name="inherit_id" ref="odoo_website_helpdesk.support_ticket_view_tree"/>
         <field name="arch" type="xml">
@@ -93,8 +93,8 @@
     </record>
 
     <!-- Helpdesk Ticket Search View - Add AI filters -->
-    <record id="view_helpdesk_ticket_search_inherit_fizixai" model="ir.ui.view">
-        <field name="name">helpdesk.ticket.search.inherit.fizixai</field>
+    <record id="view_helpdesk_ticket_search_inherit_coflow" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.search.inherit.coflow</field>
         <field name="model">helpdesk.ticket</field>
         <field name="inherit_id" ref="odoo_website_helpdesk.support_ticket_view_search"/>
         <field name="arch" type="xml">

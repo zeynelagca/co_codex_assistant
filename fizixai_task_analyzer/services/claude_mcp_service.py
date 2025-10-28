@@ -30,7 +30,7 @@ class ClaudeMCPService(models.AbstractModel):
             return project.claude_api_key
 
         # Fallback to system parameter
-        api_key = self.env['ir.config_parameter'].sudo().get_param('fizixai.claude_api_key')
+        api_key = self.env['ir.config_parameter'].sudo().get_param('coflow.claude_api_key')
         if not api_key:
             raise UserError(_('Claude API key is not configured. Please configure it in Settings or Project/Partner settings.'))
         return api_key

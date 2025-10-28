@@ -1,11 +1,11 @@
 {
-    'name': 'FizixAI Task Analyzer',
+    'name': 'CoFlow Task Analyzer',
     'version': '17.0.1.0.0',
     'category': 'Productivity',
     'summary': 'AI-powered task and ticket analysis with automatic complexity scoring and solution suggestions',
     'description': """
-        FizixAI Task Analyzer
-        =====================
+        CoFlow Task Analyzer
+        ====================
 
         Features:
         ---------

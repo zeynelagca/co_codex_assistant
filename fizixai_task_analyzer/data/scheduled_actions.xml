@@ -3,7 +3,7 @@
     <data noupdate="1">
         <!-- Scheduled Action: Analyze Pending Tasks and Tickets -->
         <record id="ir_cron_analyze_pending_records" model="ir.cron">
-            <field name="name">FizixAI: Analyze Pending Tasks and Tickets</field>
+            <field name="name">CoFlow: Analyze Pending Tasks and Tickets</field>
             <field name="model_id" ref="model_ai_analyzer_service"/>
             <field name="state">code</field>
             <field name="code">model.scheduled_analyze_pending_records()</field>

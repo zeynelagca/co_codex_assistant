@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Project Task Form View - Add AI Analysis Fields -->
-    <record id="view_task_form_inherit_fizixai" model="ir.ui.view">
-        <field name="name">project.task.form.inherit.fizixai</field>
+    <record id="view_task_form_inherit_coflow" model="ir.ui.view">
+        <field name="name">project.task.form.inherit.coflow</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
@@ -77,8 +77,8 @@
     </record>
 
     <!-- Project Task Tree View - Add AI fields -->
-    <record id="view_task_tree_inherit_fizixai" model="ir.ui.view">
-        <field name="name">project.task.tree.inherit.fizixai</field>
+    <record id="view_task_tree_inherit_coflow" model="ir.ui.view">
+        <field name="name">project.task.tree.inherit.coflow</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_tree2"/>
         <field name="arch" type="xml">
@@ -97,8 +97,8 @@
     </record>
 
     <!-- Project Task Search View - Add AI filters -->
-    <record id="view_task_search_inherit_fizixai" model="ir.ui.view">
-        <field name="name">project.task.search.inherit.fizixai</field>
+    <record id="view_task_search_inherit_coflow" model="ir.ui.view">
+        <field name="name">project.task.search.inherit.coflow</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_search_form"/>
         <field name="arch" type="xml">
