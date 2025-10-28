@@ -24,8 +24,9 @@
         - Automatic code generation for simple tasks
         - GitHub integration for code commits
     """,
-    'author': 'FizixAI',
-    'website': 'https://www.fizixai.com',
+    'author': 'CoFlow, Ali Zeynel Ağca',
+    'website': 'https://www.coflow.com.tr',
+    'maintainer': 'Ali Zeynel Ağca',
     'depends': [
         'base',
         'project',
