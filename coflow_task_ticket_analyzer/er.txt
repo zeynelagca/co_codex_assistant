@@ -1,0 +1,77 @@
+RPC_ERROR
+Odoo Server Error
+Traceback (most recent call last):
+  File "C:\Users\myoga\odoo\17\server\odoo\http.py", line 1783, in _serve_db
+    return service_model.retrying(self._serve_ir_http, self.env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\service\model.py", line 133, in retrying
+    result = func()
+             ^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\http.py", line 1810, in _serve_ir_http
+    response = self.dispatcher.dispatch(rule.endpoint, args)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\http.py", line 2014, in dispatch
+    result = self.request.registry['ir.http']._dispatch(endpoint)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\addons\website\models\ir_http.py", line 235, in _dispatch
+    response = super()._dispatch(endpoint)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\addons\base\models\ir_http.py", line 222, in _dispatch
+    result = endpoint(**request.params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\http.py", line 759, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\addons\web\controllers\dataset.py", line 28, in call_button
+    action = self._call_kw(model, method, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\addons\web\controllers\dataset.py", line 20, in _call_kw
+    return call_kw(request.env[model], method, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\api.py", line 468, in call_kw
+    result = _call_kw_multi(method, model, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\api.py", line 453, in _call_kw_multi
+    result = method(recs, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\AppData\Roaming\Python\Python312\site-packages\decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\addons\base\models\ir_module.py", line 75, in check_and_log
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\addons\base\models\ir_module.py", line 466, in button_immediate_install
+    return self._button_immediate_function(self.env.registry[self._name].button_install)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\addons\base\models\ir_module.py", line 590, in _button_immediate_function
+    registry = modules.registry.Registry.new(self._cr.dbname, update_module=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\AppData\Roaming\Python\Python312\site-packages\decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\tools\func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\modules\registry.py", line 114, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "C:\Users\myoga\odoo\17\server\odoo\modules\loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\modules\loading.py", line 364, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\modules\loading.py", line 194, in load_module_graph
+    model_names = registry.load(env.cr, package)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\modules\registry.py", line 271, in load
+    model = cls._build_model(self, cr)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\myoga\odoo\17\server\odoo\models.py", line 719, in _build_model
+    raise TypeError("Model %r does not exist in registry." % name)
+TypeError: Model 'helpdesk.ticket' does not exist in registry.
+
+The above server error caused the following client error:
+RPC_ERROR: Odoo Server Error
+    RPC_ERROR
+        at makeErrorFromResponse (http://localhost:8069/web/assets/debug/web.assets_web.js:27940:19)
+        at XMLHttpRequest.<anonymous> (http://localhost:8069/web/assets/debug/web.assets_web.js:27988:27)

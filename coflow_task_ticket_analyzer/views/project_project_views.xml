@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Project Form View - Add GitHub and AI Configuration -->
+    <record id="view_project_form_inherit_coflow" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.coflow</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <!-- Add new page for AI & GitHub Configuration -->
+            <xpath expr="//notebook" position="inside">
+                <page string="AI &amp; GitHub" name="ai_github_config">
+                    <group>
+                        <group string="GitHub Configuration">
+                            <field name="github_repo_url" placeholder="https://github.com/username/repo"/>
+                            <field name="github_token" password="True"/>
+                            <field name="github_branch"/>
+                        </group>
+                        <group string="Claude AI Configuration">
+                            <field name="claude_api_key" password="True"/>
+                            <field name="claude_model"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="AI Analysis Settings">
+                            <field name="enable_ai_analysis"/>
+                            <field name="ai_auto_trigger" invisible="not enable_ai_analysis"/>
+                            <field name="ai_trigger_on_stage_change" invisible="not enable_ai_analysis"/>
+                        </group>
+                        <group string="Complexity Thresholds">
+                            <field name="complexity_low_threshold"/>
+                            <field name="complexity_high_threshold"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Auto Development">
+                            <field name="enable_auto_development"/>
+                            <field name="auto_dev_max_complexity" invisible="not enable_auto_development"/>
+                        </group>
+                    </group>
+
+                    <group string="Help">
+                        <div class="text-muted">
+                            <p><strong>GitHub Configuration:</strong></p>
+                            <ul>
+                                <li>Repository URL: Full GitHub repository URL (e.g., https://github.com/username/repo)</li>
+                                <li>Personal Access Token: GitHub PAT with repo permissions</li>
+                                <li>Default Branch: Branch where auto-commits will be based (usually 'main' or 'master')</li>
+                            </ul>
+                            <p><strong>Claude AI:</strong></p>
+                            <ul>
+                                <li>API Key: Get from https://console.anthropic.com/</li>
+                                <li>Model: Claude 3.5 Sonnet recommended for best results</li>
+                            </ul>
+                            <p><strong>Auto Development:</strong></p>
+                            <ul>
+                                <li>Automatically generates code and creates GitHub PRs for simple tasks</li>
+                                <li>Only works for tasks with complexity â‰¤ threshold</li>
+                            </ul>
+                        </div>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

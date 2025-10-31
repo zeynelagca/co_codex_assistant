@@ -1,0 +1,10 @@
+# CoFlow Task Ticket Analyzer Python Dependencies
+
+# Claude AI (Anthropic)
+anthropic>=0.18.0
+
+# GitHub Integration
+PyGithub>=2.1.1
+
+# HTTP requests
+requests>=2.31.0
